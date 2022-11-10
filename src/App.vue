@@ -1,30 +1,181 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<div class="home">
+
+    <nav v-if="![`LoginForm`, `Signup`,`dashboard`].includes($route.name)">
+
+        <div class="navlinks">
+
+            <div class="img-box">
+                <router-link to=/>
+                    <img src="./assets/images/logo.png" alt="">
+                </router-link>
+            </div>
+
+            <ul>
+              <li>
+                <router-link to=/>
+                   Home
+                </router-link>
+              </li>
+
+                <li>
+                    <router-link to="/About">
+                        About
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/community">
+                        community
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/Market">
+                        Market
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/Market">
+                        Buy now
+                    </router-link>
+                </li>
+            </ul>
+
+            <div @click="toggleMenu" class="menu-icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div v-if="activeMenu && ![`LoginForm`, `Signup`,`dashboard`].includes($route.name)" class="navlinks-mobile">
+        <ul>
+            <li v-for="item in navElements">
+                <p></p>
+            </li>
+            <div class="register-box">
+                <router-link to="/About">
+                    Login
+                </router-link>
+                <router-link to="/Signup">
+                    <button>Register</button>
+                </router-link>
+
+            </div>
+        </ul>
+
+        <div @click="toggleMenu" class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </div>
+</div>
+
+<router-view />
 </template>
 
+<script setup>
+import navigation from './components/navbar.vue'
+import {
+    ref
+} from "vue";
+
+   
+    
+        const activeMenu = ref(false)
+        const toggleMenu = () => {
+            activeMenu.value = !activeMenu.value
+        }
+       
+
+</script>
+
 <style lang="scss">
+$bg-gradient: linear-gradient(242.86deg, #322649 1.52%, #000000 61.49%, #0D1018 93.82%);
+$color:#ffffff;
+$secondary-color:#ECEF43;
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: Poppins, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: $color;
+    background: $bg-gradient;
+    padding: 5% 5% 0;
+    height: max-content;
+    position: relative;
+}
+
+.home {
+    // position: relative;
 }
 
 nav {
-  padding: 30px;
+    height: 30%;
+   
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    .navlinks {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
 
-    &.router-link-exact-active {
-      color: #42b983;
     }
-  }
+
+    ul {
+        display: none;
+
+    }
+
+   
+
+    .img-box {
+        flex-basis: 30%;
+        height: 100%;
+        padding: 0;
+        margin: 0;display: flex;
+        justify-content: start;
+
+        
+    }
+
+    a {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        
+        width: 80%;
+        
+       
+
+    }
+
+    img {
+      
+        width: 100%;
+    }
+
+    .menu-icon {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    i {
+        color: #ECEF43;
+        font-size: 1.2rem;
+
+    }
+
 }
+
+.navlinks-mobile {
+    height: 100vh;
+    width: 75vw;
+    background: $bg-gradient;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+@import 'src/assets/scss/responsive.scss'
 </style>
