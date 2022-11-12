@@ -63,6 +63,7 @@ export default {
 @import '/src/assets/scss/utilities';
 
 .header {
+     padding: $section-spacing;
 
     text-align: left;
 
@@ -80,7 +81,7 @@ export default {
     .header-text {
 
         line-height: 5vh;
-        font-size: 1.8rem;
+        font-size: 1.8em;
         font-weight: 700;
 
         span {
@@ -132,11 +133,12 @@ export default {
     }
 
     .stats-box {
-        height: 15vh;
+        height: 7vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin:  7vh 0;
+        margin:  2vh 0 0;
+        
 
         .stats {
             width: 100%;
@@ -150,11 +152,14 @@ export default {
             text-align: center;
             border-right: 1px solid $color;
             font-size: 0.6rem;
+            
 
         }
          .stats>div>p:nth-of-type(2){
           font-size: 0.4rem;
           margin: 10% 0 0 0;
+    
+
          }
 
 

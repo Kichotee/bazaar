@@ -34,7 +34,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/Market">
+                    <router-link class="bz-btn" to="/Market">
                         Buy now
                     </router-link>
                 </li>
@@ -100,13 +100,18 @@ $secondary-color:#ECEF43;
     text-align: center;
     color: $color;
     background: $bg-gradient;
-    padding: 5% 5% 0;
-    height: max-content;
+    
+
+   
+    
     position: relative;
 }
 
 .home {
-    // position: relative;
+     padding: 5% 5% 0;
+    height: auto;
+    
+
 }
 
 nav {
@@ -122,6 +127,7 @@ nav {
     }
 
     ul {
+        
         display: none;
 
     }
