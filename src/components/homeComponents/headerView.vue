@@ -64,7 +64,7 @@ export default {
 
 .header {
      padding: $section-spacing;
-
+    margin-top: 0%;
     text-align: left;
 
     .header-box {

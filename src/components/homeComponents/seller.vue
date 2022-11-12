@@ -5,10 +5,9 @@
     </h4>
     <div class="sellers">
 
-
         <li v-for="user in users" :key="user">
             <div class="number-box">
-            <h5>{{user.id}}.</h5>
+                <h5>{{user.id}}.</h5>
             </div>
             <img :src="user.img" alt="">
             <div class="user-details">
@@ -24,7 +23,7 @@
 </section>
 </template>
 
-<script setup>
+<script>
 import {
     computed,
     onMounted,
@@ -34,21 +33,31 @@ import {
 import {
     useStore
 } from 'vuex'
+export default {
+    setup() {
+        const store = useStore();
+        const users = computed(() => {
+            return store.state.sellers
+        })
+        const nfts = computed(() => {
+            return store.state.nfts
+        })
 
-const store = useStore();
-const users = computed(() => {
-    return store.state.sellers
-})
-const nfts = computed(() => {
-    return store.state.nfts
-})
+        onMounted(() => {
+            store.dispatch("fetchUsers");
+            console.log(users);
 
-onMounted(() => {
-    store.dispatch("fetchUsers");
-    console.log(users);
-    
+        })
 
-})
+
+
+
+        return{
+            users
+        }
+    }
+
+}
 </script>
 
 <style lang="scss">
@@ -57,9 +66,10 @@ onMounted(() => {
 .section {
     height: 57vh;
     padding: $section-spacing;
-    h4{
+
+    h4 {
         text-align: center;
-        padding:  0 0 2.5% 0;
+        padding: 0 0 2.5% 0;
     }
 
     .sellers {
@@ -77,21 +87,21 @@ onMounted(() => {
             display: flex;
             width: 70%;
             align-self: center;
-            
+
             align-items: center;
             justify-content: space-around;
 
             img {
                 width: 35px;
             }
-            
-            h5{
+
+            h5 {
                 font-size: $text-size-medium*1.4;
                 color: $color;
             }
 
             h4:nth-of-type(2) {
-                font-size:  $text-size-medium*1.4;
+                font-size: $text-size-medium*1.4;
                 margin-bottom: 5%;
 
             }
@@ -99,7 +109,7 @@ onMounted(() => {
             small {
                 font-size: $text-size-medium*0.75;
                 color: $secondary-color;
-                
+
             }
         }
 

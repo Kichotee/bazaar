@@ -72,25 +72,39 @@ export default createStore({
 		nft: [],
 	},
 	getters: {
-		getNfts: (state) => state.nft.results,
+		getNfts: (state) => {
+		return state.nft
+		},
+		useNfts:(state,getters)=>{
+			
+				return getters.getNfts
+			}
 	},
 
 	actions: {
 		async fetchUsers({ commit }) {
-			try {
+			
 				const data = await axios.request(options);
 				commit("SET_NFT", data.data);
-			} catch (error) {
-				alert(error);
-				console.log(error);
-			}
-		},
+			
+		}
 	},
 
 	mutations: {
 		SET_NFT(state, data) {
-			state.nft = data;
-		},
+			// state.nft=data.results}
+			
+			for(let i in data.results){
+				if(i.image_url !== null  ){
+					delete data.results[i]
+					state.nft=data.results
+				}
+				return state.nft
+			}
+			return state.nft
+
+		}
+		
 	},
 	modules: {},
 });

@@ -1,7 +1,8 @@
 <template>
+
 <div class="home">
 
-    <nav v-if="![`LoginForm`, `Signup`,`dashboard`].includes($route.name)">
+    <nav>
 
         <div class="navlinks">
 
@@ -19,9 +20,13 @@
               </li>
 
                 <li>
+                    <Suspense timeout=0>
                     <router-link to="/About">
                         About
                     </router-link>
+                    <template #fallback>
+                    </template>
+                    </Suspense>
                 </li>
                 <li>
                     <router-link to="/community">
@@ -69,7 +74,7 @@
     </div>
 </div>
 
-<router-view />
+<router-view/>
 </template>
 
 <script setup>
@@ -100,23 +105,31 @@ $secondary-color:#ECEF43;
     text-align: center;
     color: $color;
     background: $bg-gradient;
-    
+    position: relative;
 
    
     
-    position: relative;
+    
 }
 
 .home {
-     padding: 5% 5% 0;
-    height: auto;
+     padding: 0 5% 0;
+    height: 16vh;
+    // position: sticky;
+    // background: $bg-gradient;
+    // border-bottom: 1px solid $color;
+    z-index: 14;
+    top: 0%;
+    display: flex;
+    align-items:center;
+    width: 100%;
     
 
 }
 
 nav {
-    height: 30%;
-   
+    
+   width: 100%;
 
     .navlinks {
         display: flex;

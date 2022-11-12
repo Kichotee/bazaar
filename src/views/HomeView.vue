@@ -1,38 +1,32 @@
 <template>
+<headerView />
+<seller />
 
-    <headerView />
-    <Seller/>
-    <trendCollections/>
-    <section class="newsletter">
-    <div class="newsletter-box">
-
-    </div>
-</section>
-  
-    <Newsletter/>
-    <footer/>
-
-
-<router-view></router-view>
+    <trends />
+   
+<newsletter />
+<footerView />
 </template>
 
 <script>
-import Seller from '@/components/homeComponents/seller.vue'
+import seller from '../components/homeComponents/seller.vue'
 // @ is an alias to /src
 import headerView from '../components/homeComponents/headerView.vue'
-import trendCollections from '../components/homeComponents/trendCollections.vue'
+import trends from '../components/homeComponents/trendCollections.vue'
 import Newsletter from '../components/homeComponents/Newsletter.vue'
-import footer from '../components/homeComponents/footer.vue'
-
+import footerView from '../components/homeComponents/footerView.vue'
 
 export default {
     name: 'HomeView',
     components: {
         headerView,
-        Seller,
-        trendCollections,
+        seller,
+        trends,
         Newsletter,
-        footer
+        footerView
+    },
+    setup() {
+
     }
 }
 </script>
