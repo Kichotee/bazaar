@@ -1,6 +1,6 @@
 <template>
  <hr>
-<footer class="footer">
+<section class="footer">
 
    
     <div class="footer-box">
@@ -32,7 +32,7 @@
             <a href=""><i class="fa-brands fa-instagram"></i></a>
         </div>
     </div>
-</footer>
+</section>
 <router-view/>
 </template>
 
@@ -45,9 +45,12 @@ export default {
 <style lang="scss">
 @import 'src/assets/scss/config.scss';
 
+
 .footer {
     height: 20vh;
-    padding: $section-spacing;
+    // padding: $section-spacing;
+    width: 100%;
+    
 
 }
 
@@ -61,14 +64,18 @@ hr {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3,1fr);
-    place-items: center;
+    // place-items: center;
     height: 100%;
-    padding: 2.5% 2.5% 5%;
-    row-gap: 20%;
-    column-gap: 5%;
+    // padding: 10% 2.5% 5%;
+    // row-gap: 30%;
+    
     text-align: left;
-    white-space: nowrap;
+    // white-space: nowrap;
     font-size: $text-size-medium;
+
+    *{
+      border: solid;
+    }
     p:nth-of-type(1){
       display: none;
     }
@@ -90,26 +97,31 @@ hr {
       grid-column: 1;
       align-self: start;
       display: flex;
-      width: 100%;
       justify-content: space-between;
     }
     p:nth-of-type(3){
       grid-row: 2;
       grid-column: 4;
-      width: 100%;
+      
     }
     p:nth-of-type(7){
       grid-row: 3;
       grid-column: 4;
     }
+    p:hover, i:hover{
+      color: $secondary-color;
 
-}
-
-img {
+    }
+    img {
     grid-column: 1/ -1;
     // align-self: start;
     width: 30%;
+    
 }
+
+}
+
+
 
 @import 'src/assets/scss/responsive.scss';
 </style>

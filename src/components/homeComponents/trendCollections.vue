@@ -14,7 +14,7 @@
 
             </div>
         </div>
-        <div class="collection">
+        <div class="collection"  :data-tip='nfts[2].description '>
             <img :src="nfts[2].image_url" alt="nfts[2].description">
             <div id="nft-detail" class="nft-detail">
 
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div  class="collection">
+        <div  class="collection"  :data-tip='nfts[3].description '>
             <img :src="nfts[3].image_url" :alt="nfts[3].description">
             <div id="nft-detail" class="nft-detail">
 
@@ -39,7 +39,7 @@
 
             </div>
         </div>
-        <div class="collection">
+        <div class="collection"  :data-tip='nfts[4].description '>
             <img :src="nfts[6].image_url" alt="">
             <div id="nft-detail" class="nft-detail">
 
@@ -209,7 +209,28 @@ const randNumFour= random(5)
                 padding: 0 auto;
                 color: #0D1018
             }
+       
+                
+            }
         }
+             #arrow-container:hover i {
+                animation: wobble infinite 0.5s ;
+                // transform: translate(-50px);
+            }
+            @keyframes wobble {
+                0%{
+                    transform: rotate(0deg)
+                }
+                25%{
+                    transform: rotate(10deg)
+                }
+               
+                  75%{
+                    transform: rotate(-15deg)
+                }
+                100%{
+                    transform: rotate(0deg)
+                }
     }
 
     @import 'src/assets/scss/responsive.scss';

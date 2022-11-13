@@ -1,12 +1,20 @@
 <template>
-<headerView />
-<seller />
-
+<main>
+    <headerView/>
+    <seller />
     <trends />
-   
-<newsletter />
+    <newsletter />
 <footerView />
+</main>
+
+
+    
+   
+
 </template>
+
+<headerView />
+
 
 <script>
 import seller from '../components/homeComponents/seller.vue'
@@ -32,5 +40,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+main{
+    overflow-x: hidden;
+    
+}
 </style>

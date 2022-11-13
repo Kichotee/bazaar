@@ -30,7 +30,7 @@
 
     <div class="stats-box">
         <div class="stats">
-            <div class="stats1">
+            <!-- <div class="stats1">
                 <p>2M+</p>
                 <p>Trading Volume</p>
             </div>
@@ -45,7 +45,7 @@
             <div class="stats4">
                 <p>2M+</p>
                 <p>Trading Volume</p>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -84,9 +84,10 @@ export default {
 @import '/src/assets/scss/utilities';
 
 .header {
-     padding: $section-spacing;
-    margin-top: 0%;
+    //  padding: $section-spacing;
+    border: solid;
     text-align: left;
+
 
     .header-box {
         display: flex;
@@ -150,10 +151,14 @@ export default {
                 font-size: 1rem;
                 width: 40%;
                 font-size: 0.7rem;
+                cursor: pointer;
 
                 i {
                     color: $secondary-color;
+                // animation: wobble infinite 0.5s;
+
                 }
+                
             }
         }
 
@@ -199,6 +204,22 @@ export default {
         }
 
     }
+      @keyframes wobble {
+                0%{
+                    transform: rotate(0deg)
+                }
+                25%{
+                    transform: rotate(10deg)
+                }
+               
+                  75%{
+                    transform: rotate(-15deg)
+                }
+                100%{
+                    transform: rotate(0deg)
+                
+                }
+                }
 
 }
 

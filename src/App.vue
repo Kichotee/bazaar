@@ -102,17 +102,19 @@ $secondary-color:#ECEF43;
     font-family: Poppins, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+  
     color: $color;
     background: $bg-gradient;
-    position: relative;
-
+    // position: relative;
+width: 100vw !important;
+// overflow: hidden;
    
     
     
 }
 
 .home {
+    
      padding: 0 5% 0;
     height: 10vh;
     position: sticky;
@@ -122,8 +124,8 @@ $secondary-color:#ECEF43;
     top: 0%;
     display: flex;
     align-items:center;
-    width: 100%;
-    
+    // width: 100%;
+    // display: none;
 
 }
 
@@ -162,10 +164,13 @@ nav {
         margin: 0;
         height: 100%;
         
-        width: 80%;
+        width: 80%;transition: all 0.5;
         
        
 
+    }
+    a:hover{
+        color:darken($color: $color, $amount: 40%);
     }
 
     img {
