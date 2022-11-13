@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <router-link class="bz-btn" to="/Market">
-                        Buy now
+                        Connect wallet
                     </router-link>
                 </li>
             </ul>
@@ -114,9 +114,9 @@ $secondary-color:#ECEF43;
 
 .home {
      padding: 0 5% 0;
-    height: 16vh;
-    // position: sticky;
-    // background: $bg-gradient;
+    height: 10vh;
+    position: sticky;
+    background: $bg-gradient;
     // border-bottom: 1px solid $color;
     z-index: 14;
     top: 0%;

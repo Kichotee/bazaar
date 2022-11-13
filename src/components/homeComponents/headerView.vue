@@ -14,7 +14,7 @@
 
         </div>
         <div class="detail">
-            <p>Lorem ipsum dolor sit amet consectetur. Sem. Lorem ipsum dolor sit amet consectetur. Sem.</p>
+            <p ref="detailText" ></p>
             <div class="header-cta-box">
                 <a class="bz-btn" href="">
                     Market
@@ -53,7 +53,28 @@
 </template>
 
 <script>
+import {ref, onMounted } from 'vue'
 export default {
+    setup(){
+        const detailText=ref(null)
+         let text = 'All forms of digital arts live here. Create, trade, earn. DYOR'
+            let i =0;
+        onMounted(()=>{
+
+           
+           const textInt=  setInterval(() => {
+                detailText.value.innerHTML += text[i];
+                i++;
+
+                if (i===text.length) {
+                    clearInterval(textInt) 
+                }
+            }, 500);
+        })
+        return{
+            detailText
+        }
+    }
 
 }
 </script>
@@ -73,12 +94,22 @@ export default {
         flex-direction: column;
         justify-content: start;
     }
+    .img-box:hover img{
+        transform:  translateX(10%);
+
+    }
 
     .header-img {
         display: none;
+        transition: all 2s ;
     }
 
     .header-text {
+        position: relative;
+   
+    
+    
+
 
         line-height: 5vh;
         font-size: 1.8em;

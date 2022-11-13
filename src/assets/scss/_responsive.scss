@@ -1,5 +1,9 @@
 @media screen and (min-width: 990px) {
-    #app {}
+    #app {
+        .home{
+            height: 14vh;
+        }
+    }
 
     nav {
         border: 1px solid #fff;

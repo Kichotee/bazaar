@@ -2,7 +2,7 @@
 <section class="collection-section" v-if="nfts.length!= 0">
     <h4>Trending Collections</h4>
     <div class="collections">
-        <div class="collection">
+        <div class="collection" :data-tip='nfts[1].description '>
             <img :src="nfts[1].image_url" alt="nfts[0].description">
             <div id="nft-detail" class="nft-detail">
 
@@ -117,6 +117,7 @@ const randNumFour= random(5)
         gap: 5%;
         height: auto;
         border-radius: 10px;
+     
 
         &>* {
             cursor: pointer;
@@ -128,8 +129,30 @@ const randNumFour= random(5)
             width: 100%;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
-
+            border-radius: 20px;
+            position: relative;
+            &::after{
+                content: attr(data-tip);
+                background: darken($color: #0D1018, $amount: 90%);
+                box-shadow: 0px 1px 8px 0px #00000040;
+                position: absolute;
+                height: 12vh;
+                left: 50%;
+                top:50% ;
+                font-size: 10%;
+                border-radius: 10px;
+                text-align-last: left;
+                width: 60%;
+                transform: scale(0);
+                transform-origin: top;
+                transition: all 0.25s ease-out;
+                overflow: hidden;
+                   padding: 1% 5%;
+                
+            }
+             &:hover::after{
+                transform: scale(1) translate(-50%,-50%);
+             }
             img {
                 width: 100%;
                 height: 70%;
