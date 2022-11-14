@@ -52,24 +52,47 @@
     </nav>
 
     <div v-if="activeMenu && ![`LoginForm`, `Signup`,`dashboard`].includes($route.name)" class="navlinks-mobile">
+         <div @click="toggleMenu" class="menu-icon">
+            <i class="fa-solid fa-close"></i>
+        </div>
+       
         <ul>
-            <li v-for="item in navElements">
-                <p></p>
-            </li>
-            <div class="register-box">
-                <router-link to="/About">
-                    Login
+            
+              <li>
+                <router-link to=/>
+                   Home
                 </router-link>
-                <router-link to="/Signup">
-                    <button>Register</button>
-                </router-link>
+              </li>
 
-            </div>
+                <li>
+                    <Suspense timeout=0>
+                    <router-link to="/About">
+                        About
+                    </router-link>
+                    <template #fallback>
+                        Page Loading
+                    </template>
+                    </Suspense>
+                </li>
+                <li>
+                    <router-link to="/community">
+                        community
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/Market">
+                        Market
+                    </router-link>
+                </li>
+                <li>
+                    <router-link  to="/Market">
+                        Connect wallet
+                    </router-link>
+                </li>
+            
         </ul>
 
-        <div @click="toggleMenu" class="menu-icon">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+      
 
     </div>
 </div>
@@ -106,7 +129,7 @@ $secondary-color:#ECEF43;
     color: $color;
     background: $bg-gradient;
     // position: relative;
-width: 100vw !important;
+max-width: 100vw !important;
 // overflow: hidden;
    
     
@@ -186,7 +209,7 @@ nav {
 
     i {
         color: #ECEF43;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
 
     }
 
@@ -195,10 +218,39 @@ nav {
 .navlinks-mobile {
     height: 100vh;
     width: 75vw;
-    background: $bg-gradient;
+    background: $secondary-color;
     position: absolute;
     top: 0;
     right: 0;
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        height: 60%;
+        // align-items: center;
+
+        color: #322649;
+        
+        width: 100%;
+    }
+    li{
+        text-align: right !important;
+        width: 70%;
+        font-weight: 600;
+
+    }
+    .menu-icon{
+        float: right;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+    i{
+        font-size: 1.5rem;
+        color: #0D1018;
+    }
 
 }
 @import 'src/assets/scss/responsive.scss'

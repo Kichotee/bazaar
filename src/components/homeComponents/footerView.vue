@@ -4,7 +4,9 @@
 
    
     <div class="footer-box">
+      <img-box>
         <img src="../../assets/images/logo.png" alt="">
+      </img-box>
       <p>
         <router-link to='/'>Home</router-link>
       </p>
@@ -48,7 +50,7 @@ export default {
 
 .footer {
     height: 20vh;
-    // padding: $section-spacing;
+    padding: 0 5vh 5vh;
     width: 100%;
     
 
@@ -64,7 +66,7 @@ hr {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3,1fr);
-    // place-items: center;
+    place-items: center;
     height: 100%;
     // padding: 10% 2.5% 5%;
     // row-gap: 30%;
@@ -73,9 +75,9 @@ hr {
     // white-space: nowrap;
     font-size: $text-size-medium;
 
-    *{
-      border: solid;
-    }
+    // *{
+    //   border: solid;
+    // }
     p:nth-of-type(1){
       display: none;
     }
@@ -95,8 +97,9 @@ hr {
     .sm-links{
       grid-row: 3;
       grid-column: 1;
-      align-self: start;
+      align-self: center;
       display: flex;
+      width: 100%;
       justify-content: space-between;
     }
     p:nth-of-type(3){
@@ -107,15 +110,25 @@ hr {
     p:nth-of-type(7){
       grid-row: 3;
       grid-column: 4;
+      white-space: nowrap;
     }
     p:hover, i:hover{
       color: $secondary-color;
 
     }
+    img-box{
+       grid-column: 1/ -1;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    
+      
+    }
     img {
-    grid-column: 1/ -1;
-    // align-self: start;
-    width: 30%;
+   
+    
+    width: 80%;
+    
     
 }
 

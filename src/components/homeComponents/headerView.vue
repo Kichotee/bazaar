@@ -30,7 +30,7 @@
 
     <div class="stats-box">
         <div class="stats">
-            <!-- <div class="stats1">
+            <div class="stats1">
                 <p>2M+</p>
                 <p>Trading Volume</p>
             </div>
@@ -45,7 +45,7 @@
             <div class="stats4">
                 <p>2M+</p>
                 <p>Trading Volume</p>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -84,8 +84,8 @@ export default {
 @import '/src/assets/scss/utilities';
 
 .header {
-    //  padding: $section-spacing;
-    border: solid;
+     padding: $section-spacing;
+    
     text-align: left;
 
 
@@ -155,7 +155,7 @@ export default {
 
                 i {
                     color: $secondary-color;
-                // animation: wobble infinite 0.5s;
+                animation: wobble infinite 0.5s;
 
                 }
                 

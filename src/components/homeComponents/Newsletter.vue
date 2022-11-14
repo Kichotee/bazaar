@@ -111,17 +111,7 @@
 					border: none;
 				}
 			}
-			//  button::after{
-			//         content: '';
-			//         height: 70%;
-			//         width: 10px;
-			//         background: linear-gradient(268.7deg, #0D1018 0.45%, #6C6579 120.69%);;
-			//         border: 1px solid $secondary-color;
-			//         position: absolute;
-			//         display: block;
-			//         top: -10%;
-			//         transform: rotate(45deg);
-			//     }
+			
 		}
 	}
 
