@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
 import community from '@/views/community.vue'
-import Market from '@/views/Market.vue'
+
 
 
 const routes = [
@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/Market',
     name: 'Market',
-    component: Market
+    component:()=>import('@/views/Market.vue')
   },
  
 ]

@@ -14,7 +14,7 @@
 
         </div>
         <div class="detail">
-            <p ref="detailText" ></p>
+            <p style="" ref="detailText" ></p>
             <div class="header-cta-box">
                 <a class="bz-btn" href="">
                     Market

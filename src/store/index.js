@@ -3,7 +3,7 @@ import axios from "axios";
 
 const options = {
 	method: "GET",
-	url: "https://api.blockspan.com/v1/exchanges/collections?chain=eth-main&exchange=opensea&page_size=25",
+	url: "https://api.blockspan.com/v1/exchanges/collections?chain=eth-main&exchange=opensea&page_size=24",
 	headers: {
 		accept: "application/json",
 		"X-API-KEY":
@@ -77,6 +77,7 @@ export default createStore({
 		},
 		useNfts:(state,getters)=>{
 			
+				
 				return getters.getNfts
 			}
 	},
@@ -92,11 +93,11 @@ export default createStore({
 
 	mutations: {
 		SET_NFT(state, data) {
-			// state.nft=data.results}
+			
 			
 			for(let i in data.results){
-				if(i.image_url !== null  ){
-					delete data.results[i]
+				if(i.image_url!==null){
+					
 					state.nft=data.results
 				}
 				return state.nft

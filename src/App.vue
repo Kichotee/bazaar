@@ -1,4 +1,5 @@
 <template>
+<pageLoader/>
 
 <div class="home">
 
@@ -24,8 +25,7 @@
                     <router-link to="/About">
                         About
                     </router-link>
-                    <template #fallback>
-                    </template>
+                    
                     </Suspense>
                 </li>
                 <li>
@@ -34,9 +34,11 @@
                     </router-link>
                 </li>
                 <li>
+                             
                     <router-link to="/Market">
                         Market
                     </router-link>
+                    
                 </li>
                 <li>
                     <router-link class="bz-btn" to="/Market">
@@ -50,7 +52,7 @@
             </div>
         </div>
     </nav>
-
+<transition appear name="nav">
     <div v-if="activeMenu && ![`LoginForm`, `Signup`,`dashboard`].includes($route.name)" class="navlinks-mobile">
          <div @click="toggleMenu" class="menu-icon">
             <i class="fa-solid fa-close"></i>
@@ -95,19 +97,22 @@
       
 
     </div>
+    </transition>
 </div>
 
 <router-view/>
 </template>
 
 <script setup>
-import navigation from './components/navbar.vue'
+import pageLoader from './components/pageLoader.vue';
 import {
     ref
 } from "vue";
 
    
-    
+    components:{
+        pageLoader
+    }
         const activeMenu = ref(false)
         const toggleMenu = () => {
             activeMenu.value = !activeMenu.value
@@ -128,9 +133,9 @@ $secondary-color:#ECEF43;
   
     color: $color;
     background: $bg-gradient;
-    // position: relative;
+
 max-width: 100vw !important;
-// overflow: hidden;
+
    
     
     
@@ -217,9 +222,9 @@ nav {
 
 .navlinks-mobile {
     height: 100vh;
-    width: 75vw;
+    width: 47%;
     background: $secondary-color;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     ul{
@@ -230,7 +235,7 @@ nav {
         // align-items: center;
 
         color: #322649;
-        
+        font-size: 0.8rem;
         width: 100%;
     }
     li{
@@ -252,6 +257,16 @@ nav {
         color: #0D1018;
     }
 
+}
+.nav-enter-from,
+.nav-leave-to{
+    translate: 100%;
+
+    transform-origin: top right;
+}
+.nav-enter-active,
+.nav-leave-active{
+    transition: all 0.5s;
 }
 @import 'src/assets/scss/responsive.scss'
 </style>

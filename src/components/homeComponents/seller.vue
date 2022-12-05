@@ -5,7 +5,7 @@
     </h4>
     <div class="sellers">
 
-        <li v-for="user in users" :key="user">
+        <li v-for="user in users">
             <div class="number-box">
                 <h5>{{user.id}}.</h5>
             </div>
@@ -39,24 +39,12 @@ export default {
         const users = computed(() => {
             return store.state.sellers
         })
-        const nfts = computed(() => {
-            return store.state.nfts
-        })
 
-        onMounted(() => {
-            store.dispatch("fetchUsers");
-            console.log(users);
-
-        })
-
-
-
-
-        return{
+        return {
             users
         }
-    }
 
+    }
 }
 </script>
 
@@ -64,7 +52,7 @@ export default {
 @import 'src/assets/scss/config.scss';
 
 .section {
-    height: 57vh;
+    max-height: auto;
     padding: $section-spacing;
 
     h4 {
@@ -76,7 +64,7 @@ export default {
         box-shadow: 0px 1px 4px 0px #00000040;
         border-radius: 20px;
         background: linear-gradient(86.64deg, #0D1018 1.81%, #171221 97.76%);
-        height: 100%;
+        height: 65vh;
         display: grid;
         grid-template: repeat(5, 1fr)/repeat(2, 1fr);
         padding: 10% 5%;

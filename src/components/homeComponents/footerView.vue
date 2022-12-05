@@ -1,140 +1,144 @@
 <template>
- <hr>
-<section class="footer">
-
-   
-    <div class="footer-box">
-      <img-box>
-        <img src="../../assets/images/logo.png" alt="">
-      </img-box>
-      <p>
-        <router-link to='/'>Home</router-link>
-      </p>
-      <p>
-        <router-link to='/'>Community</router-link>
-      </p>
-      <p>
-        <router-link to='/'>Privacy Policy</router-link>
-      </p>
-      <p>
-        Contact us
-      </p>
-      <p>
-        <router-link to='/'>About</router-link>
-      </p>
-      <p>
-        <router-link to='/'>Market</router-link>
-      </p>
-      <p>
-        <router-link to='/'>Terms and conditions</router-link>
-      </p>
-        <div class="sm-links">
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
-        </div>
-    </div>
-</section>
-<router-view/>
+	<hr />
+	<section class="footer">
+		<div class="footer-box">
+			<div class='img-box'>
+				<img
+					src="../../assets/images/logo.png"
+					alt=""
+				/>
+			</div >
+			<p>
+				<router-link to="/">Home</router-link>
+			</p>
+			<p>
+				<router-link to="/"
+					>Community</router-link
+				>
+			</p>
+			<p>
+				<router-link to="/"
+					>Privacy Policy</router-link
+				>
+			</p>
+			<p>Contact us</p>
+			<p>
+				<router-link to="/">About</router-link>
+			</p>
+			<p>
+				<router-link to="/">Market</router-link>
+			</p>
+			<p>
+				<router-link to="/"
+					>Terms and conditions</router-link
+				>
+			</p>
+			<div class="sm-links">
+				<a href=""
+					><i class="fa-brands fa-facebook"></i
+				></a>
+				<a href=""
+					><i class="fa-brands fa-twitter"></i
+				></a>
+				<a href=""
+					><i class="fa-brands fa-instagram"></i
+				></a>
+			</div>
+		</div>
+	</section>
+	<router-view />
 </template>
 
 <script>
-export default {
-
-}
+	export default {};
 </script>
 
 <style lang="scss">
-@import 'src/assets/scss/config.scss';
+	@import "src/assets/scss/config.scss";
 
+	.footer {
+		height: 20vh;
+		padding: 0 5vh 5vh;
+		width: 100%;
+	}
 
-.footer {
-    height: 20vh;
-    padding: 0 5vh 5vh;
-    width: 100%;
-    
+	hr {
+		background-color: $secondary-color;
+		height: 1px;
+		border: none;
+	}
 
-}
+	.footer-box {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr) 1.5fr;
+		grid-template-rows: repeat(3, 1fr);
+		place-items: center;
+    justify-items: start;
+		text-align: left;
 
-hr {
-    background-color: $secondary-color;
-    height: 1px;
-    border: none
-}
+		height: 100%;
 
-.footer-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3,1fr);
-    place-items: center;
-    height: 100%;
-    // padding: 10% 2.5% 5%;
-    // row-gap: 30%;
-    
-    text-align: left;
-    // white-space: nowrap;
-    font-size: $text-size-medium;
+		padding: 5% 1.5% 0%;
 
-    // *{
-    //   border: solid;
-    // }
-    p:nth-of-type(1){
-      display: none;
-    }
-     p:nth-of-type(2){
-      display: none;
-    }
-     p:nth-of-type(5){
-      display: none;
-    }
-     p:nth-of-type(6){
-      display: none;
-    }
-    p:nth-of-type(4){
-      grid-row: 2;
-      grid-column: 1;
-    }
-    .sm-links{
-      grid-row: 3;
-      grid-column: 1;
-      align-self: center;
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-    }
-    p:nth-of-type(3){
-      grid-row: 2;
-      grid-column: 4;
-      
-    }
-    p:nth-of-type(7){
-      grid-row: 3;
-      grid-column: 4;
-      white-space: nowrap;
-    }
-    p:hover, i:hover{
-      color: $secondary-color;
+		text-align: left;
 
-    }
-    img-box{
-       grid-column: 1/ -1;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-    
-      
-    }
-    img {
-   
-    
-    width: 80%;
-    
-    
-}
+		font-size: $text-size-medium * 0.75;
 
-}
+		p:nth-of-type(1) {
+			display: none;
+		}
+		p:nth-of-type(2) {
+			display: none;
+		}
+		p:nth-of-type(5) {
+			display: none;
+		}
+		p:nth-of-type(6) {
+			display: none;
+		}
+		p:nth-of-type(4) {
+			grid-row: 2;
+			grid-column: 1;
+			white-space: nowrap;
+			justify-self: start;
+		}
+		.sm-links {
+			grid-row: 3;
+			grid-column: 1;
+			align-self: center;
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+		}
+		p:nth-of-type(3) {
+			grid-row: 2;
+			grid-column: 4;
+			justify-items: start;
+     
+      // width: 100%;
+			font-size: $text-size-medium * 0.6;
+		}
+		p:nth-of-type(7) {
+			grid-row: 3;
+			grid-column: 4;
+			justify-items: start;
+			font-size: $text-size-medium * 0.6;
+		}
+		p:hover,
+		i:hover {
+			color: $secondary-color;
+		}
+		img-box {
+			grid-column: 1/ -1;
+			width: 25%;
+			display: flex;
+      justify-self: center;
+			justify-content: center;
+		}
+		img {
+			width: 100%;
+		}
+	}
 
-
-
-@import 'src/assets/scss/responsive.scss';
+	@import "src/assets/scss/responsive.scss";
 </style>

@@ -2,7 +2,7 @@
 	<section class="newsletter">
 		<div class="newsletter-box">
 			<header>
-				<p>
+				<p id="header-text">
 					Subscribe to our Newsletter and get the
 					latest updates
 				</p>
@@ -38,7 +38,7 @@
 
 	.newsletter {
 		padding: $section-spacing;
-		height: 50vh;
+		height: 28vh;
 		box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 
 		&-box {
@@ -53,65 +53,66 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 1.5% 10% 0 2.5%;
+			padding: 5% 5% 0 5%;
+			gap: 10%;
+		}
+		form {
+		flex-basis: 40%;
+			width: 100%;
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
 
-			header {
-				text-align: left;
-				color: #f5f5f5;
+			position: relative;
+			input {
+				width: 70%;
+				background: none;
+				border: 1px solid $secondary-color;
+				height: 40%;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+				font-size: $text-size-medium*0.5;
+			}
+			input::placeholder {
+				width: 30%;
 
-				p {
-					font-size: $text-size-medium * 2.2;
-					font-weight: 600;
-				}
-
-				small {
-					font-size: $text-size-medium * 0.75;
-				}
-
-				#submit-button {
-					background: transparent;
-				}
+				padding: 0 35%;
+			}
+			input:focus {
+				color: $color;
+				padding: 0 0 0 2%;
+				outline: none;
 			}
 
-			form {
-				flex-basis: 60%;
-				width: 89%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			button {
+				width: 30%;
+				background: none;
 
-				position: relative;
-				input {
-					width: 70%;
-					background: none;
-					border: 1px solid $secondary-color;
-					height: 40%;
-					border-top-left-radius: 20px;
-					border-bottom-left-radius: 20px;
-				}
-				input::placeholder {
-                    width: 30%;
-                    
-                    padding: 0 35%;
-				}
-				input:focus{
-					color: $color;
-					padding: 0 0 0 2%;
-					outline: none;
-				}
-
-				button {
-					width: 30%;
-					background: none;
-
-					height: 40%;
-					background-color: $secondary-color;
-					border-top-right-radius: 20px;
-					border-bottom-right-radius: 20px;
-					border: none;
-				}
+				height: 40%;
+				background-color: $secondary-color;
+				border-top-right-radius: 20px;
+				border-bottom-right-radius: 20px;
+				border: none;
+				font-size: $text-size-medium*0.6;
 			}
+		}
+		header {
+			text-align: left;
+			color: #f5f5f5;
 			
+
+			p {
+				font-size: $text-size-medium ;
+				font-weight: 600;
+			}
+
+			small {
+				font-size: $text-size-medium *0.5;
+			}
+
+			#submit-button {
+				background: transparent;
+			}
 		}
 	}
 

@@ -3,7 +3,7 @@
     <h4>Trending Collections</h4>
     <div class="collections">
         <div class="collection" :data-tip='nfts[1].description '>
-            <img :src="nfts[1].image_url" alt="nfts[0].description">
+            <img :src="nfts[1].image_url" alt="nfts[1].description">
             <div id="nft-detail" class="nft-detail">
 
                 <h4>{{nfts[1].name}}</h4>
@@ -80,6 +80,7 @@ let nfts = computed(() => {
 
     return store.getters.useNfts
 })
+    
 
 
 const random = (min) => {
@@ -92,8 +93,7 @@ const randNumFour= random(5)
 
     store.commit({type:'SET_NFT'})
     store.dispatch("fetchUsers");
-    console.log(random(2));
-
+    
 
 </script>
 
