@@ -35,7 +35,9 @@ import {
 } from 'vuex'
 
 export default {
-
+    props:{
+        nfts: Object
+    },
     components: {
 
     },
@@ -44,18 +46,18 @@ export default {
 
         const store = useStore()
 
-        const nfts = computed(() => {
-            return store.getters.useNfts
-        })
+        // const nfts = computed(() => {
+        //     return store.getters.useNfts
+        // })
 
-        store.commit({
-            type: 'SET_NFT'
-        })
-        store.dispatch("fetchUsers");
-        console.log(nfts);
+        // store.commit({
+        //     type: 'SET_NFT'
+        // })
+        // store.dispatch("fetchUsers");
+        
 
         return {
-            nfts
+            
         }
 
     }

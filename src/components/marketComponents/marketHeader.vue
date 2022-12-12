@@ -5,16 +5,13 @@
             <h2>Market</h2>
             <p>Browse through an extensive collection of NFTs</p>
         </div>
-        <!-- <p>
-        {{searchData}}
-
-        </p> -->
+        <!-- -->
         <div class="search-box">
-            <input  v-model="searchData" type="search" name="" placeholder="search Nfts" id="">
+            <input   type="search" name="" placeholder="search Nfts" id=""
+            @input="$emit('update:searchData', $event.target.value)">
         </div>
         <div class="dropdown-box"> 
-            <!-- <i @click="dropdownActive=!dropdownActive" class="fa-solid fa-angle-down"></i> -->
-        <select name="filter-nft" id="" @click="$emit(' ')">
+        <select name="filter-nft" id="">
             <option value="">
                 most expensive
             </option>
@@ -40,9 +37,7 @@ import {
     useStore
 } from 'vuex';
 export default {
-    props:{
-        nfts
-    },
+   
     data() {
         return {
             dropdownActive: false,
@@ -58,22 +53,21 @@ export default {
         toggleDropdown() {
             this.dropdownActive = !this.dropdownActive
         },
+    },props:{
+        searchData:String
     },
+    emits:["update:searchData"],
     setup() {
         computed(()=>{
 
             })
-        //     const store = useStore()
+            const store = useStore()
 
-        // const nfts = computed(() => {
-        //     return store.getters.useNfts
-        // })
+        const nfts = computed(() => {
+            return store.getters.useNfts
+        })
             const searchData = ref('')
-const matchingSearch = computed(()=>{
-    return nfts.value.filter((nft)=>{
-        nft.includes(searchData.value)
-    })
-})
+
             return {
                searchData,
                nfts
