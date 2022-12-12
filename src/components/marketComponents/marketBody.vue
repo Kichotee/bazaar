@@ -71,6 +71,7 @@ export default {
 #marketSection {
     padding: 0% 5% 0vh;
    height: min-content ;
+   min-height: 60vh;
     overflow-x: hidden;
 }
 

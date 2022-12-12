@@ -1,8 +1,8 @@
 <template>
 <main>
    
-    <marketHeader v-model="searchData" />
-    <marketBody :nfts='nfts' />
+    <marketHeader v-model:searchData="searchData" />
+    <marketBody :nfts='filteredNft' />
     <footerView />
 </main>
 </template>
@@ -37,22 +37,27 @@ export default {
             return store.getters.useNfts
         })
         const data= nfts.value
-       let filteredNft = []
+      
         store.commit({
             type: 'SET_NFT'
         })
         store.dispatch("fetchUsers");
-        onMounted(()=>{
-           
-               
-        })
-      
-            const daa = computed(()=>{
-               return data.includes
-            })
-        
-      console.log(nfts.value[0].name);
 
+
+      const filteredNft= computed(()=>{
+        return nfts.value.filter((nft) => {
+        return (
+         nft.name.toLowerCase().includes(searchData.value.toLowerCase())
+        );
+      })
+    })
+
+        // if (filteredNft.length ==0) {
+            
+        // }
+
+    console.log(filteredNft);
+      
         return {
             nfts,
             filteredNft,

@@ -58,21 +58,6 @@ export default {
     },
     emits:["update:searchData"],
     setup() {
-        computed(()=>{
-
-            })
-            const store = useStore()
-
-        const nfts = computed(() => {
-            return store.getters.useNfts
-        })
-            const searchData = ref('')
-
-            return {
-               searchData,
-               nfts
-            }
-
     }
 }
 </script>
