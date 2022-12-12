@@ -5,10 +5,10 @@
             <h2>Market</h2>
             <p>Browse through an extensive collection of NFTs</p>
         </div>
-        <p>
+        <!-- <p>
         {{searchData}}
 
-        </p>
+        </p> -->
         <div class="search-box">
             <input  v-model="searchData" type="search" name="" placeholder="search Nfts" id="">
         </div>
