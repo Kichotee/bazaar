@@ -13,11 +13,11 @@
                     <h2>{{nft.name}} </h2>
                     <p class="price">{{Math.round(nfts[1].stats.total_average_price * 100) / 100}} Eth</p>
                     <p class="owner">By {{nft.twitter_username}}</p>
-                    <a class="btn" href="">Place bid</a>
+                    <button class="btn" href="">Place bid</button>
                 </div>
             </div>
         </div>
-        <h4>Load More</h4>
+    
     </div>
 
 </section>
@@ -62,14 +62,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import 'src/assets/scss/config.scss';
 @import 'src/assets/scss/utilities.scss';
 
 #marketSection {
     padding: 0% 5% 0vh;
    height: min-content ;
-    overflow: visible;
+    overflow-x: hidden;
 }
 
 .body-box {
@@ -87,7 +87,10 @@ export default {
 .items {
     height: 30vh;
     width: 100%;
-
+    transition:  all 0.25s ease;
+    &:hover{
+        scale:1.1
+    }
     figure {
         height: 70%;
         border-radius: 10px 10px 0px 0px;
@@ -133,6 +136,17 @@ export default {
             font-size: 0.5rem;
 
         }
+        button{
+            background-color: transparent;
+            color: $secondary-color;
+            cursor:pointer;
+            &:hover{
+            background-color: $secondary-color;
+            color: #171221;
+
+            }
+        }
+
 
         .btn {
             padding: 1% 2%;

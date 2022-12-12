@@ -16,9 +16,9 @@
         <div class="detail">
             <p style="" ref="detailText" ></p>
             <div class="header-cta-box">
-                <a class="bz-btn" href="">
+                <router-link class="bz-btn" to="/Market">
                     Market
-                </a>
+                </router-link>
                 <div class="explore">
                     <p>Explore More</p>
                     <i class="fa-solid fa-arrow-right"></i>
@@ -54,6 +54,7 @@
 
 <script>
 import {ref, onMounted } from 'vue'
+import { RouterView, RouterLink } from "vue-router";
 export default {
     setup(){
         const detailText=ref(null)

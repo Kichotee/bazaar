@@ -5,33 +5,27 @@
             <h2>Market</h2>
             <p>Browse through an extensive collection of NFTs</p>
         </div>
+        <p>
+        {{searchData}}
+
+        </p>
         <div class="search-box">
-            <input type="search" name="" placeholder="search Nfts" id="">
+            <input  v-model="searchData" type="search" name="" placeholder="search Nfts" id="">
         </div>
-        <div class="dropdown-box">
+        <div class="dropdown-box"> 
             <!-- <i @click="dropdownActive=!dropdownActive" class="fa-solid fa-angle-down"></i> -->
-
-            <div v-if="dropdownActive" class="dropdown-list">
-                <p>Arts</p>
-                <p>Games</p>
-                <p>Celebrity</p>
-            </div>
+        <select name="filter-nft" id="" @click="$emit(' ')">
+            <option value="">
+                most expensive
+            </option>
+             <option value="">
+                
+            </option>
+        </select>
+          
         </div>
-        <div class="dropdown-list" id='dropdown-desktop'>
-            <p>Arts</p>
-            <p>Games</p>
-            <p>Celebrity</p>
-        </div>
-        <div  @click="sortActive=!sortActive"  class="sort-box">
-            <i @click="sortActive=!sortActive" class="fa-solid fa-angle-down"></i>
-            <TransitionGroup @before-enter='beforeEnter' @enter='enter' v-if="sortActive" tag="ul" appear class="sort-list">
-                <p v-for="item in sortElements" key='item
-                :data-index="index"'>
-                    {{item.element}}
-                </p>
-            </transitionGroup>
-
-        </div>
+       
+       
 
     </div>
 </header>
@@ -39,10 +33,16 @@
 
 <script>
 import gsap from "gsap";
-import {
-    onMounted
+import {computed,
+    onMounted, ref
 } from 'vue';
+import {
+    useStore
+} from 'vuex';
 export default {
+    props:{
+        nfts
+    },
     data() {
         return {
             dropdownActive: false,
@@ -60,28 +60,24 @@ export default {
         },
     },
     setup() {
-
-        const beforeEnter = (el) => {
-            el.style.opacity = 0
-            el.style.transform = 'translateY(-10%)'
-
-        }
-
-        const onEnter = (el, done) => {
-            gsap.to(el, {
-                duration: 2,
-                opacity: 0,
-                y: 0,
-                delay: el.dataset.index * 0.15,
-                onComplete: done
+        computed(()=>{
 
             })
+        //     const store = useStore()
 
+        // const nfts = computed(() => {
+        //     return store.getters.useNfts
+        // })
+            const searchData = ref('')
+const matchingSearch = computed(()=>{
+    return nfts.value.filter((nft)=>{
+        nft.includes(searchData.value)
+    })
+})
             return {
-                onBeforeEnter,
-                onEnter
+               searchData,
+               nfts
             }
-        }
 
     }
 }
@@ -92,7 +88,7 @@ export default {
 
 .marketHeader {
 
-    padding: 2.5vh 5% 0vh;
+    padding: 2.5vh 5% 2vh;
     overflow: hidden;
     color: #fff;
 
@@ -189,6 +185,13 @@ export default {
         flex-direction: column;
         padding: 5% 0;
         align-items: center;
+    }
+    select{
+        background: none;
+        border: none;
+        outline: none;
+                color: #8D8C8C;
+        
     }
 
 }
