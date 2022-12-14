@@ -2,7 +2,7 @@
 <main>
    
     <marketHeader v-model:searchData="searchData" />
-    <marketBody :nfts='filteredNft' />
+    <marketBody :nfts='filteredNft' :searchData="searchData" />
     <footerView />
 </main>
 </template>
@@ -47,21 +47,19 @@ export default {
       const filteredNft= computed(()=>{
         return nfts.value.filter((nft) => {
         return (
-         nft.name.toLowerCase().includes(searchData.value.toLowerCase())
+         nft.name.toUpperCase().indexOf(searchData.value.toUpperCase()) !=-1
         );
       })
     })
 
-        // if (filteredNft.length ==0) {
-            
-        // }
+       
 
     console.log(filteredNft);
       
         return {
             nfts,
             filteredNft,
-            data,
+            
             searchData
         }
 

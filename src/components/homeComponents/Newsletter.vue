@@ -93,7 +93,8 @@
 				border-top-right-radius: 20px;
 				border-bottom-right-radius: 20px;
 				border: none;
-				font-size: $text-size-medium*0.6;
+				font-size: $text-size-medium*0.9;
+				letter-spacing: 0.05rem;
 			}
 		}
 		header {

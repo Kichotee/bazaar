@@ -11,11 +11,17 @@
                 </figure>
                 <div class="nft-detail">
                     <h2>{{nft.name}} </h2>
-                    <p class="price">{{Math.round(nfts[1].stats.total_average_price * 100) / 100}} Eth</p>
+                    <p class="price">{{Math.round(nft.stats.total_average_price * 100) / 100}} Eth</p>
                     <p class="owner">By {{nft.twitter_username}}</p>
                     <button class="btn" href="">Place bid</button>
                 </div>
             </div>
+        </div>
+        <div id="searchError" v-if="searchData&&nfts.length==0">
+            <h4>
+            Nft not available, try another search
+
+            </h4>
         </div>
     
     </div>
@@ -24,19 +30,12 @@
 </template>
 
 <script>
-import {
-    computed,
-    onBeforeMount,
-    onMounted,
-    ref
-} from "vue";
-import {
-    useStore
-} from 'vuex'
+
 
 export default {
     props:{
-        nfts: Object
+        nfts: Object,
+        searchData:String
     },
     components: {
 
@@ -44,18 +43,9 @@ export default {
 
     setup() {
 
-        const store = useStore()
+       
 
-        // const nfts = computed(() => {
-        //     return store.getters.useNfts
-        // })
-
-        // store.commit({
-        //     type: 'SET_NFT'
-        // })
-        // store.dispatch("fetchUsers");
-        
-
+      
         return {
             
         }
@@ -72,11 +62,28 @@ export default {
     padding: 0% 5% 0vh;
    height: min-content ;
    min-height: 60vh;
-    overflow-x: hidden;
+   overflow-x: hidden;
 }
 
 .body-box {
     
+    #searchError{
+            
+            width: 100%;
+            height:50vh;
+            display: flex ;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+    
+          
+            
+           
+        }
+        h4{
+                color:$secondary-color;
+                font-size: 1.5rem
+            }
    
 }
 
@@ -164,6 +171,7 @@ export default {
 
         }
     }
+   
 }
 @import 'src/assets/scss/responsive.scss';
 </style>

@@ -68,7 +68,6 @@ import {
     onMounted,
     ref
 } from "vue";
-import _ from 'lodash';
 import {
     useStore
 } from 'vuex'
@@ -162,7 +161,7 @@ const randNumFour= random(5)
             .nft-detail {
                 padding: 2.5% 5% 0;
                 width: 100%;
-                font-size: 0.3rem;
+                font-size: 0.5rem;
                 height: 30%;
                 border-radius: 0px 0px 10px 10px;
 
@@ -174,6 +173,12 @@ const randNumFour= random(5)
                 h4 {
                     text-align: left;
                     align-self: center;
+                
+
+                }
+                h5{
+                
+
                 }
 
                 .creator-detail {

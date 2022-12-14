@@ -14,7 +14,7 @@
 
         </div>
         <div class="detail">
-            <p style="" ref="detailText" ></p>
+            <p style="" id="detailText" ></p>
             <div class="header-cta-box">
                 <router-link class="bz-btn" to="/Market">
                     Market
@@ -57,14 +57,17 @@ import {ref, onMounted } from 'vue'
 import { RouterView, RouterLink } from "vue-router";
 export default {
     setup(){
-        const detailText=ref(null)
+        
+        onMounted(()=>{
+            
+        })
          let text = 'All forms of digital arts live here. Create, trade, earn. DYOR'
             let i =0;
         onMounted(()=>{
 
            
            const textInt=  setInterval(() => {
-                detailText.value.innerHTML += text[i];
+            document.getElementById('detailText').innerHTML += text[i];
                 i++;
 
                 if (i===text.length) {
@@ -73,7 +76,7 @@ export default {
             }, 500);
         })
         return{
-            detailText
+
         }
     }
 
@@ -124,7 +127,7 @@ export default {
     }
 
     .detail {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         line-height: 2vh;
         margin: 1vh 0 0;
         display: flex;
@@ -134,7 +137,7 @@ export default {
 
         &>p {
             color: #f5f5f5;
-            font-size: 7px;
+            // font-size: 7px;
         }
 
         .header-cta-box {
