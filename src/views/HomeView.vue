@@ -1,5 +1,5 @@
-<template>
-<main>
+<template >
+<main @click.self="toggleMenu">
     <headerView/>
     <seller />
     <trends />
@@ -23,6 +23,8 @@ import headerView from '../components/homeComponents/headerView.vue'
 import trends from '../components/homeComponents/trendCollections.vue'
 import Newsletter from '../components/homeComponents/Newsletter.vue'
 import footerView from '../components/homeComponents/footerView.vue'
+import { ref } from 'vue'
+
 
 export default {
     name: 'HomeView',
@@ -32,9 +34,17 @@ export default {
         trends,
         Newsletter,
         footerView
-    },
+    }
+    ,
+    
     setup() {
-
+       const activeMenu = ref(false)
+        const toggleMenu = ()=>{
+            activeMenu.value != activeMenu.value
+        }
+        return{
+            toggleMenu
+        }
     }
 }
 </script>

@@ -59,15 +59,17 @@ export default {
     setup(){
         
         onMounted(()=>{
+         
+
             
         })
          let text = 'All forms of digital arts live here. Create, trade, earn. DYOR'
             let i =0;
         onMounted(()=>{
-
+            const detailText=  document.getElementById('detailText')
            
            const textInt=  setInterval(() => {
-            document.getElementById('detailText').innerHTML += text[i];
+          detailText.innerHTML += text[i];
                 i++;
 
                 if (i===text.length) {

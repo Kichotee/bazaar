@@ -1,5 +1,5 @@
 <template>
-<pageLoader/>
+
 
 <div class="home">
 
@@ -21,12 +21,11 @@
               </li>
 
                 <li>
-                    <Suspense timeout=0>
+                    
                     <router-link to="/About">
                         About
                     </router-link>
                     
-                    </Suspense>
                 </li>
                 <li>
                     <router-link to="/community">
@@ -41,9 +40,16 @@
                     
                 </li>
                 <li>
-                    <router-link class="bz-btn" to="/Market">
+                    <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta"  class="bz-btn" to="/Market">
                         Connect wallet
-                    </router-link>
+                    </a>
+                    <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported ">
+                        {{ address.substring(0,5)+'...' }}
+                    </p>
+                    <p v-else="isMetamaskSupported"> 
+                        <a href="">DownloadMetamask</a> 
+                    </p>
+                   
                 </li>
             </ul>
 
@@ -60,36 +66,40 @@
        
         <ul>
             
-              <li>
+              <li @click="activeMenu=false">
                 <router-link to=/>
                    Home
                 </router-link>
               </li>
 
-                <li>
-                    <Suspense timeout=0>
+                <li @click="activeMenu=false">
+
                     <router-link to="/About">
                         About
                     </router-link>
-                    <template #fallback>
-                        Page Loading
-                    </template>
-                    </Suspense>
+                   
                 </li>
-                <li>
+                <li @click="activeMenu=false">
                     <router-link to="/community">
                         community
                     </router-link>
                 </li>
-                <li>
+                <li @click="activeMenu=false">
                     <router-link to="/Market">
                         Market
                     </router-link>
                 </li>
-                <li>
-                    <router-link  to="/Market">
+                <li @click="address.length>0 ? activeMenu=false: activeMenu=true ">
+                    <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta">
                         Connect wallet
-                    </router-link>
+                    </a>
+                    <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported ">
+                        {{ address.substring(0,5)+'...' }}
+                    </p>
+                    <p v-else="isMetamaskSupported"> 
+                        <a href="">DownloadMetamask</a> 
+                    </p>
+                   
                 </li>
             
         </ul>
@@ -100,25 +110,42 @@
     </transition>
 </div>
 
-<router-view/>
+<router-view :toggle="toggleMenu" :active="activeMenu" />
 </template>
 
-<script setup>
+<script  setup>
 import pageLoader from './components/pageLoader.vue';
 import {
-    ref
+    ref,
+    onMounted,
+    computed
 } from "vue";
 
    
-    components:{
+ components:{
         pageLoader
     }
         const activeMenu = ref(false)
         const toggleMenu = () => {
             activeMenu.value = !activeMenu.value
-        }
+    }
+    const isLoggedin= ref(false)
+    const isMetamaskSupported = ref(false)
+    const address = ref('')
+    onMounted(()=>{
+        isMetamaskSupported.value= typeof window.ethereum !== undefined
        
-
+    })
+    async function requestMeta(){
+       const accounts= await window.ethereum.request({ method: 'eth_requestAccounts' });
+         address.value = accounts[0]
+         isLoggedin.value = true
+    }
+    const computedAddress = computed(()=>{
+        address.value.substring(0,4)
+        if (address.value.length> 1) isLoggedin.value=true
+       })
+console.log(address.value);
 </script>
 
 <style lang="scss">
@@ -193,6 +220,7 @@ nav {
         height: 100%;
         
         width: 80%;transition: all 0.5;
+        cursor: pointer;
         
        
 
@@ -216,6 +244,9 @@ nav {
         color: #ECEF43;
         font-size: 1.5rem;
 
+    }
+    #wallet{
+        color: $secondary-color;
     }
 
 }
@@ -242,6 +273,7 @@ nav {
         text-align: right !important;
         width: 70%;
         font-weight: 600;
+        cursor: pointer;
 
     }
     .menu-icon{
