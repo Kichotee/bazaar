@@ -42,18 +42,10 @@ export default {
         return {
             dropdownActive: false,
             sortActive: false,
-            sortElements: [{
-                element: 'New'
-            }, {
-                element: 'Popular'
-            }]
         }
     },
-    methods: {
-        toggleDropdown() {
-            this.dropdownActive = !this.dropdownActive
-        },
-    },props:{
+    
+    props:{
         searchData:String
     },
     emits:["update:searchData"],

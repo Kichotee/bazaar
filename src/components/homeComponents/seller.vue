@@ -23,7 +23,7 @@
 </section>
 </template>
 
-<script>
+<script >
 import {
     computed,
     onMounted,
@@ -32,10 +32,18 @@ import {
 
 import {
     useStore
-} from 'vuex'
+} from 'vuex';
+
+
 export default {
     setup() {
+        // define vuex store in component
+
         const store = useStore();
+        
+
+        // assign store's state to variable
+
         const users = computed(() => {
             return store.state.sellers
         })

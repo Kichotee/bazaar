@@ -1,5 +1,5 @@
 <template>
-<main>
+<main  @click="">
    
     <marketHeader v-model:searchData="searchData" />
     <marketBody :nfts='filteredNft' :searchData="searchData" />
@@ -13,8 +13,6 @@ import marketHeader from '../components/marketComponents/marketHeader.vue'
 import footerView from '../components/homeComponents/footerView.vue'
 import {
     computed,
-    onBeforeMount,
-    onMounted,
     ref
 } from "vue";
 import {
@@ -29,6 +27,7 @@ export default {
 
     },
     setup() {
+
         const searchData = ref('');
         
         const store = useStore()
@@ -36,7 +35,6 @@ export default {
         const nfts = computed(() => {
             return store.getters.useNfts
         })
-        const data= nfts.value
       
         store.commit({
             type: 'SET_NFT'
@@ -50,16 +48,11 @@ export default {
          nft.name.toUpperCase().indexOf(searchData.value.toUpperCase()) !=-1
         );
       })
-    })
+    });
 
-       
-
-    console.log(filteredNft);
       
         return {
-            nfts,
             filteredNft,
-            
             searchData
         }
 

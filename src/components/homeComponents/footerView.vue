@@ -3,16 +3,19 @@
 	<section class="footer">
 		<div class="footer-box">
 			<div class='img-box'>
-				<img
-					src="../../assets/images/logo.png"
-					alt=""
-				/>
+				<router-link to="/">
+
+					<img
+						src="../../assets/images/logo.png"
+						alt=""
+					/>
+				</router-link>
 			</div >
 			<p>
 				<router-link to="/">Home</router-link>
 			</p>
 			<p>
-				<router-link to="/"
+				<router-link to="/Community"
 					>Community</router-link
 				>
 			</p>
@@ -23,10 +26,10 @@
 			</p>
 			<p>Contact us</p>
 			<p>
-				<router-link to="/">About</router-link>
+				<router-link to="/About">About</router-link>
 			</p>
 			<p>
-				<router-link to="/">Market</router-link>
+				<router-link to="/Market">Market</router-link>
 			</p>
 			<p>
 				<router-link to="/"
@@ -50,6 +53,7 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
 	export default {};
 </script>
 
@@ -128,12 +132,15 @@
 		i:hover {
 			color: $secondary-color;
 		}
-		img-box {
+		.img-box {
 			grid-column: 1/ -1;
 			width: 25%;
 			display: flex;
       justify-self: center;
 			justify-content: center;
+			a{
+				width: 100%;
+			}
 		}
 		img {
 			width: 100%;

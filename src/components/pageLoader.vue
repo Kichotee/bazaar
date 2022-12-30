@@ -1,13 +1,9 @@
 <template>
-<div class="pageLoader" v-if="!isLoaded">
+    <div  class="pageloader">
 
-    <div class="cube cube-1"></div>
+        <div class="spinner"></div>
+    </div>
 
-    <div class="cube cube-2"></div>
-
-    <div class="cube cube-3"></div>
-
-</div>
 </template>
 
 <script>
@@ -19,87 +15,62 @@ export default {
 
     },
     mounted(){
-        document.onreadystatechange=()=>{
-            if(document.readyState=='complete'){
-                this.isLoaded=true
-            }
-        }
+      
     }
 }
 </script>
 
 <style lang="scss">
 @import 'src/assets/scss/config.scss';
+.pageloader{
 
-.pageLoader {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    background: $bg-gradient;
-}
+width: 100vw;
+height: 100vh !important;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 100;
+position: fixed;
+background: $bg-gradient;
 
-.cube {
-    width: 10%;
-    height: 10vw;
 
-    background: $secondary-color;
-
-    animation: loading 2s infinite;
-}
-
-.cube-1 {
-
-    
-    animation:  5s infinite loading ;
 
 }
-
-.cube-2 {
-
-    animation-delay: 0.5s;
-    animation:  10s infinite  loading;
-
+.spinner {
+ position: relative;
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
 }
 
-.cube-3 {
-
-    animation-delay: 0s;
-    animation:  7s infinite  loading;
-
+.spinner::before,
+.spinner:after {
+ content: "";
+ position: absolute;
+ border-radius: inherit;
 }
 
-@keyframes loading {
-    0% {
-        transform: scale(1);
-        rotate: 360deg;
-        
-        
-        
-    }
-    25%{
-        translate: 0 80%;
-    }
-
-    50% {
-        transform: scale(0.5);
-        background:darken($secondary-color, $amount: 30%);
-
-    }
-    75%{
-        translate: 0%;
-         
-
-    }
-
-    100% {
-        transform: scale(1);
-    }
+.spinner:before {
+ width: 100%;
+ height: 100%;
+ background-image: linear-gradient(0deg, $secondary-color 0%, #333399 100%);
+ animation: spin8932 .5s infinite linear;
 }
+
+.spinner:after {
+ width: 85%;
+ height: 85%;
+ background-color: #212121;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+@keyframes spin8932 {
+ to {
+  transform: rotate(360deg);
+ }
+}
+
+
 </style>

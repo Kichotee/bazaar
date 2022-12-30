@@ -53,8 +53,10 @@
 
         </div>
         <div id="arrow-container" class="arrow-container">
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
+                <router-link to="/Market">
+                <i class="fa-solid fa-arrow-right"></i>
+            </router-link>
+            </div>
 
     </div>
 
@@ -62,33 +64,24 @@
 </template>
 
 <script setup>
+
+// import modules
 import {
     computed,
-    onBeforeMount,
-    onMounted,
-    ref
 } from "vue";
 import {
     useStore
-} from 'vuex'
+} from 'vuex';
+import { RouterLink } from "vue-router";
 
-
+// assign store variable
 const store = useStore();
 
 let nfts = computed(() => {
-
     return store.getters.useNfts
 })
-    
 
-
-const random = (min) => {
-    Math.floor(Math.random() * (25 - min) + min)
-}
-const randNumOne= random(2)
-const randNumTwo= random(4)
-const randNumThree= random(3)
-const randNumFour= random(5)
+// get nfts from store
 
     store.commit({type:'SET_NFT'})
     store.dispatch("fetchUsers");

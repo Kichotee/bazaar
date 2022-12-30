@@ -1,5 +1,5 @@
 <template >
-<main @click.self="toggleMenu">
+<main >
     <headerView/>
     <seller />
     <trends />
@@ -38,13 +38,7 @@ export default {
     ,
     
     setup() {
-       const activeMenu = ref(false)
-        const toggleMenu = ()=>{
-            activeMenu.value != activeMenu.value
-        }
-        return{
-            toggleMenu
-        }
+       
     }
 }
 </script>

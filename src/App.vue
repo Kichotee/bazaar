@@ -1,116 +1,117 @@
 <template>
+    <page-loader v-if="false"></page-loader>
 
+    <div class="home">
 
-<div class="home">
+        <nav>
 
-    <nav>
+            <div class="navlinks">
 
-        <div class="navlinks">
-
-            <div class="img-box">
-                <router-link to=/>
+                <div class="img-box">
+                    <router-link to= />
                     <img src="./assets/images/logo.png" alt="">
-                </router-link>
+                    </router-link>
+                </div>
+
+                <ul>
+                    <li>
+                        <router-link to= />
+                        Home
+                        </router-link>
+                    </li>
+
+                    <li>
+
+                        <router-link to="/About">
+                            About
+                        </router-link>
+
+                    </li>
+                    <li>
+                        <router-link to="/community">
+                            community
+                        </router-link>
+                    </li>
+                    <li>
+
+                        <router-link to="/Market">
+                            Market
+                        </router-link>
+
+                    </li>
+                    <li class="walletConnect">
+                        <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta" class="bz-btn" to="/Market">
+                            Connect wallet
+                        </a>
+                        <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported" @click="isLoggedin= false">
+                            {{ address.substring(0, 5) + '...' }}
+                        </p>
+                        <p v-else="isMetamaskSupported">
+                            <a href="">DownloadMetamask</a>
+                        </p>
+
+                    </li>
+                </ul>
+
+                <div @click="toggleMenu" class="menu-icon">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
             </div>
+        </nav>
+        <transition appear name="nav">
+            <div v-if="activeMenu && ![`LoginForm`, `Signup`, `dashboard`].includes($route.name)"
+                class="navlinks-mobile">
+                <div @click="toggleMenu" class="menu-icon">
+                    <i class="fa-solid fa-close"></i>
+                </div>
 
-            <ul>
-              <li>
-                <router-link to=/>
-                   Home
-                </router-link>
-              </li>
+                <ul>
 
-                <li>
-                    
-                    <router-link to="/About">
-                        About
-                    </router-link>
-                    
-                </li>
-                <li>
-                    <router-link to="/community">
-                        community
-                    </router-link>
-                </li>
-                <li>
-                             
-                    <router-link to="/Market">
-                        Market
-                    </router-link>
-                    
-                </li>
-                <li>
-                    <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta"  class="bz-btn" to="/Market">
-                        Connect wallet
-                    </a>
-                    <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported ">
-                        {{ address.substring(0,5)+'...' }}
-                    </p>
-                    <p v-else="isMetamaskSupported"> 
-                        <a href="">DownloadMetamask</a> 
-                    </p>
-                   
-                </li>
-            </ul>
+                    <li @click="activeMenu = false">
+                        <router-link to= />
+                        Home
+                        </router-link>
+                    </li>
 
-            <div @click="toggleMenu" class="menu-icon">
-                <i class="fa-solid fa-bars"></i>
+                    <li @click="activeMenu = false">
+
+                        <router-link to="/About">
+                            About
+                        </router-link>
+
+                    </li>
+                    <li @click="activeMenu = false">
+                        <router-link to="/community">
+                            community
+                        </router-link>
+                    </li>
+                    <li @click="activeMenu = false">
+                        <router-link to="/Market">
+                            Market
+                        </router-link>
+                    </li>
+                    <li @click="address.length > 0 ? activeMenu = false : activeMenu = true">
+                        <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta">
+                            Connect wallet
+                        </a>
+                        <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported" @click="isLoggedin= false">
+                            {{ address.substring(0, 5) + '...' }}
+                        </p>
+                        <p v-else="isMetamaskSupported">
+                            <a href="">DownloadMetamask</a>
+                        </p>
+
+                    </li>
+
+                </ul>
+
+
+
             </div>
-        </div>
-    </nav>
-<transition appear name="nav">
-    <div v-if="activeMenu && ![`LoginForm`, `Signup`,`dashboard`].includes($route.name)" class="navlinks-mobile">
-         <div @click="toggleMenu" class="menu-icon">
-            <i class="fa-solid fa-close"></i>
-        </div>
-       
-        <ul>
-            
-              <li @click="activeMenu=false">
-                <router-link to=/>
-                   Home
-                </router-link>
-              </li>
-
-                <li @click="activeMenu=false">
-
-                    <router-link to="/About">
-                        About
-                    </router-link>
-                   
-                </li>
-                <li @click="activeMenu=false">
-                    <router-link to="/community">
-                        community
-                    </router-link>
-                </li>
-                <li @click="activeMenu=false">
-                    <router-link to="/Market">
-                        Market
-                    </router-link>
-                </li>
-                <li @click="address.length>0 ? activeMenu=false: activeMenu=true ">
-                    <a v-if="!isLoggedin && isMetamaskSupported" @click="requestMeta">
-                        Connect wallet
-                    </a>
-                    <p id="wallet" v-else-if="isLoggedin && isMetamaskSupported ">
-                        {{ address.substring(0,5)+'...' }}
-                    </p>
-                    <p v-else="isMetamaskSupported"> 
-                        <a href="">DownloadMetamask</a> 
-                    </p>
-                   
-                </li>
-            
-        </ul>
-
-      
-
+        </transition>
     </div>
-    </transition>
-</div>
 
-<router-view :toggle="toggleMenu" :active="activeMenu" />
+    <router-view  />
 </template>
 
 <script  setup>
@@ -120,73 +121,93 @@ import {
     onMounted,
     computed
 } from "vue";
+import {
+    useStore
+} from 'vuex';
 
-   
- components:{
-        pageLoader
-    }
-        const activeMenu = ref(false)
-        const toggleMenu = () => {
-            activeMenu.value = !activeMenu.value
-    }
-    const isLoggedin= ref(false)
-    const isMetamaskSupported = ref(false)
-    const address = ref('')
-    onMounted(()=>{
-        isMetamaskSupported.value= typeof window.ethereum !== undefined
-       
-    })
-    async function requestMeta(){
-       const accounts= await window.ethereum.request({ method: 'eth_requestAccounts' });
-         address.value = accounts[0]
-         isLoggedin.value = true
-    }
-    const computedAddress = computed(()=>{
-        address.value.substring(0,4)
-        if (address.value.length> 1) isLoggedin.value=true
-       })
-console.log(address.value);
+
+const loading = ref(true);
+
+setTimeout(() =>{
+    loading.value= false
+}, 5000)
+ 
+
+//    import loading components
+components: {
+    pageLoader
+}
+// Toggle menu variable and functions
+const activeMenu = ref(false)
+
+const toggleMenu = () => {
+    activeMenu.value = !activeMenu.value
+}
+
+// wallet connect variables
+
+const isLoggedin = ref(false)
+const isMetamaskSupported = ref(false)
+const address = ref('')
+
+// check if metamask extension is supported
+
+onMounted(() => {
+    isMetamaskSupported.value = typeof window.ethereum !== undefined
+
+})
+
+// wallet connection function
+async function requestMeta() {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    address.value = accounts[0]
+    isLoggedin.value = true
+}
+// update address
+const computedAddress = computed(() => {
+    address.value.substring(0, 4)
+    if (address.value.length > 1) isLoggedin.value = true
+})
+
 </script>
 
 <style lang="scss">
 $bg-gradient: linear-gradient(242.86deg, #322649 1.52%, #000000 61.49%, #0D1018 93.82%);
-$color:#ffffff;
-$secondary-color:#ECEF43;
+$color: #ffffff;
+$secondary-color: #ECEF43;
 
 #app {
     font-family: Poppins, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  
+
     color: $color;
     background: $bg-gradient;
 
-max-width: 100vw !important;
+    max-width: 100vw !important;
 
-   
-    
-    
+
+
+
 }
 
 .home {
-    
-     padding: 0 5% 0;
+
+    padding: 0 5% 0;
     height: 10vh;
     position: sticky;
     background: $bg-gradient;
-    // border-bottom: 1px solid $color;
     z-index: 14;
     top: 0%;
     display: flex;
-    align-items:center;
-    // width: 100%;
-    // display: none;
+    align-items: center;
+   
 
 }
 
 nav {
-    
-   width: 100%;
+
+    width: 100%;
 
     .navlinks {
         display: flex;
@@ -197,40 +218,38 @@ nav {
     }
 
     ul {
-        
         display: none;
-
     }
 
-   
+
 
     .img-box {
         flex-basis: 30%;
         height: 100%;
         padding: 0;
-        margin: 0;display: flex;
+        margin: 0;
+        display: flex;
         justify-content: start;
 
-        
+
     }
 
     a {
         padding: 0;
         margin: 0;
         height: 100%;
-        
-        width: 80%;transition: all 0.5;
-        cursor: pointer;
-        
-       
 
+        width: 80%;
+        transition: all 0.5;
+        cursor: pointer;
     }
-    a:hover{
-        color:darken($color: $color, $amount: 40%);
+
+    a:hover {
+        color: darken($color: $color, $amount: 40%);
     }
 
     img {
-      
+
         width: 100%;
     }
 
@@ -245,7 +264,8 @@ nav {
         font-size: 1.5rem;
 
     }
-    #wallet{
+
+    #wallet {
         color: $secondary-color;
     }
 
@@ -258,7 +278,8 @@ nav {
     position: fixed;
     top: 0;
     right: 0;
-    ul{
+
+    ul {
         display: flex;
         flex-direction: column;
         gap: 5%;
@@ -269,14 +290,16 @@ nav {
         font-size: 0.8rem;
         width: 100%;
     }
-    li{
+
+    li {
         text-align: right !important;
         width: 70%;
         font-weight: 600;
         cursor: pointer;
 
     }
-    .menu-icon{
+
+    .menu-icon {
         float: right;
         height: 10vh;
         display: flex;
@@ -284,21 +307,26 @@ nav {
         justify-content: center;
         width: 30%;
     }
-    i{
+
+    i {
         font-size: 1.5rem;
         color: #0D1018;
     }
 
 }
+
 .nav-enter-from,
-.nav-leave-to{
+.nav-leave-to {
     translate: 100%;
 
     transform-origin: top right;
 }
+
 .nav-enter-active,
-.nav-leave-active{
+.nav-leave-active {
     transition: all 0.5s;
 }
+
+
 @import 'src/assets/scss/responsive.scss'
 </style>
