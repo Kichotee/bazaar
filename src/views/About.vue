@@ -5,7 +5,7 @@
         <div class="about-text-box">
 
             <div class="col-1">
-                <p>Welcome to our NFT website! We are a marketplace for buying and selling unique, one-of-a-kind digital assets called non-fungible tokens (NFTs). Our platform is built on the Ethereum blockchain, which ensures the authenticity and ownership of each NFT we offer.
+                <p>Welcome to our Bazaar! We are a marketplace for buying and selling unique, one-of-a-kind digital assets called non-fungible tokens (NFTs). Our platform is built on the Ethereum blockchain, which ensures the authenticity and ownership of each NFT we offer.
 
 Our mission is to provide a secure and trusted platform for collectors, artists, and enthusiasts to buy and sell NFTs. We offer a wide range of NFTs, including art, collectibles, and even virtual real estate.
 
