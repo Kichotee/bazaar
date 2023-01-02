@@ -5,13 +5,13 @@
         <div class="about-text-box">
 
             <div class="col-1">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus voluptate inventore
-                    cumque vero quisquam deleniti aut harum ea perferendis.
-                    <br>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem adipisci atque eaque esse corporis
-                     magnam iste. Odio esse atque, maiores eaque, ducimus distinctio omnis architecto quisquam sit vel nisi, fugit consequuntur. Neque illum 
-                    adipisci odio, perspiciatis aspernatur aliquid velit vitae.
-                
+                <p>Welcome to our NFT website! We are a marketplace for buying and selling unique, one-of-a-kind digital assets called non-fungible tokens (NFTs). Our platform is built on the Ethereum blockchain, which ensures the authenticity and ownership of each NFT we offer.
+
+Our mission is to provide a secure and trusted platform for collectors, artists, and enthusiasts to buy and sell NFTs. We offer a wide range of NFTs, including art, collectibles, and even virtual real estate.
+
+Our team is made up of blockchain and art experts who are passionate about the growing world of NFTs. We strive to provide the best possible experience for our users, whether you are a seasoned collector or new to the world of NFTs.
+
+We hope you enjoy your time on our website and find something special to add to your collection. Thank you for choosing us as your destination for NFTs.
                 </p>
             </div>
             <div class="col-2">
