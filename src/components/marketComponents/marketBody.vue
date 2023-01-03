@@ -91,23 +91,28 @@ export default {
        
         gsap.registerPlugin(scrollTrigger)
         const nftBeforeEnter = (el) => {
-            el.style.opacity = 0
-            el.style.transform = 'translateX(-30px)'
+            gsap.to(
+                el,{
+                    opacity:0.75,
+                    x:'-30px',
+                }
+            )
+           
         }
         const nftEnter = (el, done) => {
             gsap.to(
                 el, {
                     scrollTrigger: {
                         trigger: el,
-                        toggleActions: 'restart pause resume none',
+                        toggleActions: 'play reverse play none',
                         scrub: true
                     },
             
                     x: 0,
                     opacity: 1,
+                    duration: 2.5,
+                    delay: 0,
                     ease: 'bounce',
-                    onCompleted: done,
-                    delay: el.dataset.index * 0.25,
                 }
             )
 
@@ -148,6 +153,7 @@ export default {
         justify-content: center;
         align-items: center;
         text-align: center;
+        scroll-behavior: smooth;
 
     }
 

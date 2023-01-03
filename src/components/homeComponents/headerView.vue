@@ -205,6 +205,9 @@
 			flex-basis: 30%;
 			justify-content: space-around;
 			flex-direction: column;
+			#detailtext{
+				color: $secondary-color;
+			}
 
 			& > p {
 				color: #f5f5f5;
