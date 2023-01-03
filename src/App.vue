@@ -1,5 +1,5 @@
 <template>
-    <page-loader v-if="false"></page-loader>
+    <page-loader v-if="loading"></page-loader>
 
     <div class="home">
 

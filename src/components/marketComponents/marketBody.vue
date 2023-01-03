@@ -108,7 +108,7 @@ export default {
                         scrub: true
                     },
             
-                    x: 0,
+                    x: '0',
                     opacity: 1,
                     duration: 2.5,
                     delay: 0,

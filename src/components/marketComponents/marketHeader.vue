@@ -106,6 +106,7 @@ export default {
             background: transparent;
 
             grid-column: 1/ span 2;
+            justify-self: end;
             grid-row: 2;
             width: 80%;
 
