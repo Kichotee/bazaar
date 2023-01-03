@@ -57,8 +57,8 @@ export default {
     setup() {
         gsap.registerPlugin(scrollTrigger);
         const sellersBeforeEnter = (el) => {
-            el.style.opacity = 0
-            el.style.transform = 'translateY(150%)'
+            el.style.opacity = 0.25
+            el.style.transform = 'translateY(20%)'
             };  
             const sellersEnter = (el) => {
                 gsap.to(el,
@@ -66,7 +66,7 @@ export default {
                     scrollTrigger: {
                         target: el,
                         toggleActions: "play reverse play none ",
-                        start: "30% 10%",
+                        start: "28% 10%",
                         end: "70% center",
                     },
                     duration: 2.5,
