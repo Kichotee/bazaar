@@ -1,64 +1,75 @@
 <template>
 <section class="collection-section" v-if="nfts.length!= 0">
     <h4>Trending Collections</h4>
-    <div class="collections">
-        <div class="collection" :data-tip='nfts[1].description '>
-            <img :src="nfts[1].image_url" alt="nfts[1].description">
-            <div id="nft-detail" class="nft-detail">
-
-                <h4>{{nfts[1].name}}</h4>
-                <div class="creator-detail">
-                    <h5>By {{nfts[1].twitter_username}}</h5>
-                    <p>{{Math.round(nfts[1].stats.total_average_price * 100) / 100}} Eth</p>
+    <transition
+				appear
+				@before-enter="collectionsBeforeEnter"
+				@enter="collectionsEnter"
+			>
+        
+        
+        
+        
+        
+            <div class="collections">
+                <div class="collection" :data-tip='nfts[1].description '>
+                    <img :src="nfts[1].image_url" alt="nfts[1].description">
+                    <div id="nft-detail" class="nft-detail">
+        
+                        <h4>{{nfts[1].name}}</h4>
+                        <div class="creator-detail">
+                            <h5>By {{nfts[1].twitter_username}}</h5>
+                            <p>{{Math.round(nfts[1].stats.total_average_price * 100) / 100}} Eth</p>
+                        </div>
+        
+                    </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="collection"  :data-tip='nfts[2].description '>
-            <img :src="nfts[2].image_url" alt="nfts[2].description">
-            <div id="nft-detail" class="nft-detail">
-
-                <h4>{{nfts[2].name}}</h4>
-                <div class="creator-detail">
-                    <h5>By {{nfts[2].twitter_username}}</h5>
-                    <p>{{Math.round(nfts[2].stats.total_average_price * 100) / 100}} Eth</p>
-
+                <div class="collection"  :data-tip='nfts[2].description '>
+                    <img :src="nfts[2].image_url" alt="nfts[2].description">
+                    <div id="nft-detail" class="nft-detail">
+        
+                        <h4>{{nfts[2].name}}</h4>
+                        <div class="creator-detail">
+                            <h5>By {{nfts[2].twitter_username}}</h5>
+                            <p>{{Math.round(nfts[2].stats.total_average_price * 100) / 100}} Eth</p>
+        
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div  class="collection"  :data-tip='nfts[3].description '>
-            <img :src="nfts[3].image_url" :alt="nfts[3].description">
-            <div id="nft-detail" class="nft-detail">
-
-                <h4>{{nfts[3].name}}</h4>
-                <div class="creator-detail">
-                    <h5>By {{nfts[3].twitter_username}}</h5>
-                    <p>{{Math.round(nfts[3].stats.total_average_price * 100) / 100}} Eth</p>
-
+                <div  class="collection"  :data-tip='nfts[3].description '>
+                    <img :src="nfts[3].image_url" :alt="nfts[3].description">
+                    <div id="nft-detail" class="nft-detail">
+        
+                        <h4>{{nfts[3].name}}</h4>
+                        <div class="creator-detail">
+                            <h5>By {{nfts[3].twitter_username}}</h5>
+                            <p>{{Math.round(nfts[3].stats.total_average_price * 100) / 100}} Eth</p>
+        
+                        </div>
+        
+                    </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="collection"  :data-tip='nfts[4].description '>
-            <img :src="nfts[6].image_url" alt="">
-            <div id="nft-detail" class="nft-detail">
-
-                <h4>{{nfts[6].name}}</h4>
-                <div class="creator-detail">
-                    <h5>By {{nfts[6].twitter_username}}</h5>
-                    <p>{{Math.round(nfts[6].stats.total_average_price * 100) / 100}} Eth</p>
-
+                <div class="collection"  :data-tip='nfts[4].description '>
+                    <img :src="nfts[6].image_url" alt="">
+                    <div id="nft-detail" class="nft-detail">
+        
+                        <h4>{{nfts[6].name}}</h4>
+                        <div class="creator-detail">
+                            <h5>By {{nfts[6].twitter_username}}</h5>
+                            <p>{{Math.round(nfts[6].stats.total_average_price * 100) / 100}} Eth</p>
+        
+                        </div>
+                    </div>
+        
                 </div>
+                <div id="arrow-container" class="arrow-container">
+                        <router-link to="/Market">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </router-link>
+                    </div>
+        
             </div>
-
-        </div>
-        <div id="arrow-container" class="arrow-container">
-                <router-link to="/Market">
-                <i class="fa-solid fa-arrow-right"></i>
-            </router-link>
-            </div>
-
-    </div>
+    </transition>
 
 </section>
 </template>
@@ -73,6 +84,32 @@ import {
     useStore
 } from 'vuex';
 import { RouterLink } from "vue-router";
+import gsap from "gsap";
+import scrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(scrollTrigger)
+
+
+const collectionsBeforeEnter = (el) => {
+            el.style.opacity = 0
+            
+        }
+        const collectionsEnter =(el)=>{
+            gsap.to(
+                el, {
+                    scrollTrigger: {
+                        target: el,
+                        toggleActions: "play reverse play none ",
+                        scrub: false,
+                        start: "60% 90%",
+                        end: "70% center",
+                    },
+                    duration: 10,
+                   
+                    opacity: 1,
+                    ease: 'elastic',
+                }
+        )}
 
 // assign store variable
 const store = useStore();

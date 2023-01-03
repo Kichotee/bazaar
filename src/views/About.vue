@@ -73,9 +73,14 @@ export default {
             padding: 0 5%;
             flex-basis: 50%;
             height: 100%;
-            line-height: 2rem;
+            line-height: 1.5rem;
+            p{
+                font-size: 0.8rem;
+                text-align: center;
+            }
         }
         .col-2{
+            padding-top: 2rem;
             flex-basis: 50%;
             width: 100%;
 

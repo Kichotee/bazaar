@@ -23,7 +23,6 @@ import headerView from '../components/homeComponents/headerView.vue'
 import trends from '../components/homeComponents/trendCollections.vue'
 import Newsletter from '../components/homeComponents/Newsletter.vue'
 import footerView from '../components/homeComponents/footerView.vue'
-import { ref } from 'vue'
 
 
 export default {

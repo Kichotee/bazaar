@@ -3,23 +3,34 @@
     <h4>
         Top Sellers this week
     </h4>
-    <div class="sellers">
+    <transition
+				appear
+				@before-enter="sellersBeforeEnter"
+				@enter="sellersEnter"
+				@before-leave="sellersBeforeLeave"
+                @leave="sellersLeave"
 
-        <li v-for="user in users">
-            <div class="number-box">
-                <h5>{{user.id}}.</h5>
+			>
+        
+            <div class="sellers">
+        
+                <li v-for="user in users">
+                    <div class="number-box">
+                        <h5>{{user.id}}.</h5>
+                    </div>
+                    <img :src="user.img" alt="">
+                    <div class="user-details">
+                        <h4>
+                            {{ user.name}}
+                        </h4>
+                        <small>{{user.price}}</small>
+                    </div>
+        
+                </li>
+        
             </div>
-            <img :src="user.img" alt="">
-            <div class="user-details">
-                <h4>
-                    {{ user.name}}
-                </h4>
-                <small>{{user.price}}</small>
-            </div>
-
-        </li>
-
-    </div>
+        
+    </transition>
 </section>
 </template>
 
@@ -33,12 +44,39 @@ import {
 import {
     useStore
 } from 'vuex';
+import gsap from 'gsap'
+import scrollTrigger from 'gsap/ScrollTrigger'
+
+
+
 
 
 export default {
+    
+    
     setup() {
-        // define vuex store in component
-
+        gsap.registerPlugin(scrollTrigger);
+        const sellersBeforeEnter = (el) => {
+            el.style.opacity = 0
+            el.style.transform = 'translateY(150%)'
+            };  
+            const sellersEnter = (el) => {
+                gsap.to(el,
+                { 
+                    scrollTrigger: {
+                        target: el,
+                        toggleActions: "play reverse play none ",
+                        start: "30% 10%",
+                        end: "70% center",
+                    },
+                    duration: 2.5,
+                    y: 0,
+                    opacity: 1,
+                    ease: 'elastic',
+                });
+            };
+          
+            // define vuex store in component
         const store = useStore();
         
 
@@ -49,7 +87,7 @@ export default {
         })
 
         return {
-            users
+            users, sellersBeforeEnter, sellersEnter
         }
 
     }

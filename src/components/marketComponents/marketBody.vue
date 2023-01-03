@@ -2,8 +2,15 @@
 <section id='marketSection'>
     <div class="body-box">
         <div class="body">
-            <div v-for="nft in nfts" class="items" @click="showModal = nft.name">
-
+            <transition-group
+				appear
+				@before-enter="nftBeforeEnter"
+				@enter="nftEnter"
+			>
+        
+            
+            <div v-for="nft in nfts" class="items" @click="showModal = nft.name" :key="nft">
+    
                 <figure>
                     <picture>
                         <img :src="nft.image_url" alt="">
@@ -16,11 +23,11 @@
                     <button class="btn" href="">Place bid</button>
                 </div>
                 <teleport to='body'>
-
+    
                     <div v-if="showModal===nft.name" :key="nft.name" @click.self="closeModal" class='popup'>
                         <div class="nft-detail">
                             <div class="text-detail">
-
+    
                                 <h2>{{nft.name}} </h2>
                                 <p class="description">{{ nft.description.substring(0,200)+'...' }}</p>
                                 <p class="price">{{Math.round(nft.stats.total_average_price * 100) / 100}} Eth</p>
@@ -34,11 +41,13 @@
                         </figure>
                         </div>
                         
-
+    
                     </div>
-
+    
                 </teleport>
             </div>
+        </transition-group>
+
         </div>
         <div id="searchError" v-if="searchData&&nfts.length==0">
             <h4>
@@ -57,6 +66,8 @@ import {
 onMounted,
     ref
 } from 'vue';
+import gsap from 'gsap';
+import scrollTrigger from 'gsap/ScrollTrigger';
 
 export default {
     props: {
@@ -78,19 +89,37 @@ export default {
             showModal.value = false
         }
        
-        
-            const random= Math.floor(Math.random() * 10)
-            const getRandom=()=>{
-                2*10
-            }
+        gsap.registerPlugin(scrollTrigger)
+        const nftBeforeEnter = (el) => {
+            el.style.opacity = 0
+            el.style.transform = 'translateX(-30px)'
+        }
+        const nftEnter = (el, done) => {
+            gsap.to(
+                el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        toggleActions: 'restart pause resume none',
+                        scrub: true
+                    },
             
-            console.log(getRandom())
+                    x: 0,
+                    opacity: 1,
+                    ease: 'bounce',
+                    onCompleted: done,
+                    delay: el.dataset.index * 0.25,
+                }
+            )
 
+            }
 
         return {
             showModal,
             closeModal,
-            showModalToggle
+            showModalToggle,
+            nftBeforeEnter,
+        nftEnter
+            
         }
 
     }

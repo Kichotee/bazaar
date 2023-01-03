@@ -512,6 +512,13 @@ $text-size-medium: 0.8rem;
 
         .about-text-box{
             flex-direction: row;
+            .col-1{
+                
+                p{
+                    text-align:left;
+                    font-size: 1rem;
+                }
+            }
         }
     }
 }
