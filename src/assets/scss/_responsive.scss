@@ -135,11 +135,8 @@ $text-size-medium: 0.8rem;
             }
 
             .stats>* {
-                // align-self: center;
                 text-align: center;
                 border-right: 1px solid $color;
-
-                //   font-size: 0.8rem;
             }
 
             .stats>div>p:nth-of-type(2) {
@@ -225,8 +222,6 @@ $text-size-medium: 0.8rem;
 
         .collections {
             display: flex;
-            // grid-template-columns: repeat(4, 1fr);
-            // grid-template-rows: 0;
             height: 50vh;
             gap: 3%;
         }
@@ -412,6 +407,7 @@ $text-size-medium: 0.8rem;
                 grid-column: 1/ span 3;
                 grid-row: 2;
                 width: 80%;
+                justify-self: start;
                 
                 input{
                     width: 100%;
@@ -424,6 +420,7 @@ $text-size-medium: 0.8rem;
                 display: block;
                 grid-column: 4/ -1;
                 grid-row: 2;
+                justify-self: end;
             }
 
             #dropdown-desktop {
@@ -503,7 +500,7 @@ $text-size-medium: 0.8rem;
             color: $secondary-color;
             &:hover {
                 background-color: $secondary-color;
-                color:$color;
+                color:#0d1018;
         }
     }
     

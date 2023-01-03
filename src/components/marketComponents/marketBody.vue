@@ -31,7 +31,7 @@
                                 <h2>{{nft.name}} </h2>
                                 <p class="description">{{ nft.description.substring(0,200)+'...' }}</p>
                                 <p class="price">{{Math.round(nft.stats.total_average_price * 100) / 100}} Eth</p>
-                                <p class="owner">By {{nft.twitter_username}}</p>
+                                <p class="owner"> By {{ nft.twitter_username?nft.twitter_username:'no name'}}</p>
                                 <button class="btn" href="">Place bid</button>
                             </div>
                             <figure>
@@ -94,7 +94,7 @@ export default {
             gsap.to(
                 el,{
                     opacity:0.75,
-                    x:'-30px',
+                    x:'-10px',
                 }
             )
            
@@ -108,10 +108,10 @@ export default {
                         scrub: true
                     },
             
-                    x: '0',
+                    x: 0,
                     opacity: 1,
                     duration: 2.5,
-                    delay: 0,
+                    delay: el.dataset.index*.6,
                     ease: 'bounce',
                 }
             )
@@ -175,9 +175,10 @@ export default {
     height: 30vh;
     width: 100%;
     transition: all 0.25s ease;
+    cursor: pointer;
 
     &:hover {
-        scale: 1.1
+        scale: 1.25
     }
 
     figure {
@@ -261,7 +262,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(0.75rem);
     font-family: poppins;
     color: $color;
     overflow: hidden;
@@ -287,6 +289,11 @@ export default {
         h2{
             font-size: 1rem;
             font-weight: bold;
+            color: $secondary-color;
+
+        }
+        p:nth-of-type(3){
+            font-size: 0.8rem;
             color: $secondary-color;
 
         }

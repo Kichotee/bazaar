@@ -59,13 +59,13 @@ export default {
 
 .marketHeader {
 
-    padding: 2.5vh 5% 2vh;
+    padding: 3vh 5% 2vh;
     overflow: hidden;
     color: #fff;
 
     &-box {
         display: grid;
-        grid-template-row: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         grid-template-columns: repeat(4, 1fr);
         row-gap: 2.5vh;
 
@@ -74,7 +74,11 @@ export default {
             align-self: center;
             text-align: center;
 
-            h2 {}
+            h2 {
+                font-weight: bolder;
+                font: 1.5rem ;
+                color: $secondary-color;
+            }
 
             p {
                 font-size: $text-size-medium*0.75;
@@ -86,6 +90,7 @@ export default {
 
             grid-column: 3/ span 5;
             grid-row: 2;
+            justify-self: end;
 
             input {
                 border: $secondary-color 1px solid;
@@ -106,7 +111,6 @@ export default {
             background: transparent;
 
             grid-column: 1/ span 2;
-            justify-self: end;
             grid-row: 2;
             width: 80%;
 
