@@ -94,7 +94,9 @@ export default {
             gsap.to(
                 el,{
                     opacity:0.75,
-                    y:'60%',
+                    y:'20%',
+                    rotation:45,
+					transformOrigin:"left 50%"
                 }
             )
            
@@ -104,13 +106,14 @@ export default {
                 el, {
                     scrollTrigger: {
                         trigger: el,
-                        toggleActions: 'play pause resume pause',
-                        scrub: true,
-                        end:`top 100px
-                        `
+                        target:el,
+                        toggleActions: 'play complete reverse reset',
+                        // scrub: true,
+                        
+                        // end:`top 100px`
                         // markers:true
                     },
-            
+                    rotation:0,
                     y: 0,
                     opacity: 1,
                     duration: 2.5,

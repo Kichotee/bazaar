@@ -49,7 +49,8 @@ const newsletterBeforeEnter = (el) => {
 	gsap.to(
                 el,{
                     opacity:0,
-					x:'50px'
+					x:'50px',
+					
                     
                 }
             )
