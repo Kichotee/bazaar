@@ -99,7 +99,7 @@ const collectionsBeforeEnter = (el) => {
                 el, {
                     scrollTrigger: {
                         target: el,
-                        toggleActions: "play reverse play none ",
+                        toggleActions: "restart none play reset",
                         scrub: false,
                         start: "60% 90%",
                         end: "70% center",

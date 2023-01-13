@@ -125,12 +125,16 @@ import {
     useStore
 } from 'vuex';
 
+const store = useStore()
 
 const loading = ref(true);
 
 setTimeout(() =>{
-    loading.value= false
-}, 5000)
+    if(store.getters.useNfts !== null){
+
+        loading.value= false
+    }
+}, 0)
  
 
 //    import loading components

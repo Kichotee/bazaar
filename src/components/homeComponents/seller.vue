@@ -7,7 +7,6 @@
 				appear
 				@before-enter="sellersBeforeEnter"
 				@enter="sellersEnter"
-				@before-leave="sellersBeforeLeave"
                 @leave="sellersLeave"
 
 			>
@@ -66,8 +65,9 @@ export default {
                     scrollTrigger: {
                         target: el,
                         toggleActions: "play reverse play none ",
-                        start: "28% 10%",
+                        start: "21% 10%",
                         end: "70% center",
+                        
                     },
                     duration: 2.5,
                     y: 0,

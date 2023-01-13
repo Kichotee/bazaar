@@ -1,37 +1,90 @@
 <template>
-	<section class="newsletter">
-		<div class="newsletter-box">
-			<header>
-				<p id="header-text">
-					Subscribe to our Newsletter and get the
-					latest updates
-				</p>
-				<small
-					>Lorem ipsum dolor sit amet consectetur.
-					Sem. Lorem ipsum dolor sit amet
-					consectetur. Sem.</small
-				>
-			</header>
-			<form action="">
-				<input
-					type="email"
-					name=""
-					placeholder="Get up to date with web3"
-					id=""
-				/>
-				<button
-					id="submit-button"
-					class=""
-					type="submit"
-				>
-					Subscribe
-				</button>
-			</form>
-		</div>
+	<section v-if="loading" class="newsletter">
+		<Transition 
+				appear
+				@before-enter="newsletterBeforeEnter"
+				@enter="newsletterEnter">
+			<div class="newsletter-box">
+				<header>
+					<p id="header-text">
+						Subscribe to our Newsletter and get the
+						latest updates
+					</p>
+					<small
+						>Lorem ipsum dolor sit amet consectetur.
+						Sem. Lorem ipsum dolor sit amet
+						consectetur. Sem.</small
+					>
+				</header>
+				<form action="">
+					<input
+						type="email"
+						name=""
+						placeholder="Get up to date with web3"
+						id=""
+					/>
+					<button
+						id="submit-button"
+						class=""
+						type="submit"
+					>
+						Subscribe
+					</button>
+				</form>
+			</div>
+
+		</Transition>
 	</section>
 </template>
 
-<script setup></script>
+<script setup>
+import gsap from "gsap";
+import scrollTrigger from "gsap/ScrollTrigger";
+import { useStore } from "vuex";
+import { ref } from "vue";
+gsap.registerPlugin(scrollTrigger)
+
+
+const newsletterBeforeEnter = (el) => {
+	gsap.to(
+                el,{
+                    opacity:0,
+					x:'50px'
+                    
+                }
+            )
+           
+        }
+        const newsletterEnter =(el)=>{
+			
+            gsap.to(
+                el, {
+                    scrollTrigger: {
+						target:el,
+						trigger:el,
+                        toggleActions: "play pause resume pause",
+                        start:  `top 90%`,
+                        end:  `90% 90%`,
+						
+                    },
+                    duration: 10,
+					x:0,
+                    opacity: 1,
+                    ease: 'elastic',
+                }
+        )}
+		const store = useStore()
+
+const loading = ref(false);
+
+setTimeout(() =>{
+    if(store.getters.useNfts !== null){
+
+        loading.value= true
+    }
+}, 3000)
+
+</script>
 
 <style lang="scss">
 	@import "src/assets/scss/config.scss";

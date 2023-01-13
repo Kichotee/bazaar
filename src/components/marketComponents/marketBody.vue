@@ -94,7 +94,7 @@ export default {
             gsap.to(
                 el,{
                     opacity:0.75,
-                    x:'-10px',
+                    y:'60%',
                 }
             )
            
@@ -104,11 +104,14 @@ export default {
                 el, {
                     scrollTrigger: {
                         trigger: el,
-                        toggleActions: 'play reverse play none',
-                        scrub: true
+                        toggleActions: 'play pause resume pause',
+                        scrub: true,
+                        end:`top 100px
+                        `
+                        // markers:true
                     },
             
-                    x: 0,
+                    y: 0,
                     opacity: 1,
                     duration: 2.5,
                     delay: el.dataset.index*.6,
