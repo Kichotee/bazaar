@@ -1,18 +1,17 @@
 <template>
 	<header class="header">
 		<div class="header-box">
-            <transition
+			<transition
 				appear
 				@before-enter="headerBeforeEnter"
 				@enter="headerEnter"
 			>
-        
-            <h1 class="header-text">
-                <p><span>Discover</span> and</p>
-                <p>Explore the <span>Largest</span></p>
-                <p><span>NFT</span> collections</p>
-            </h1>
-        </transition>
+				<h1 class="header-text">
+					<p><span>Discover</span> and</p>
+					<p>Explore the <span>Largest</span></p>
+					<p><span>NFT</span> collections</p>
+				</h1>
+			</transition>
 
 			<transition
 				appear
@@ -45,35 +44,32 @@
 				</div>
 			</div>
 		</div>
-        <transition
-				appear
-				@before-enter="statsBeforeEnter"
-				@enter="statsEnter"
-			>
-        
-            <div class="stats-box">
-                <div class="stats">
-                    <div class="stats1">
-                        <p>2M+</p>
-                        <p>Trading Volume</p>
-                    </div>
-                    <div class="stats2">
-                        <p>2M+</p>
-                        <p>Trading Volume</p>
-                    </div>
-                    <div class="stats3">
-                        <p>2M+</p>
-                        <p>Trading Volume</p>
-                    </div>
-                    <div class="stats4">
-                        <p>2M+</p>
-                        <p>Trading Volume</p>
-                    </div>
-                </div>
-            </div>
-        
-        </transition>
-
+		<transition
+			appear
+			@before-enter="statsBeforeEnter"
+			@enter="statsEnter"
+		>
+			<div class="stats-box">
+				<div class="stats">
+					<div class="stats1">
+						<p>2M+</p>
+						<p>Trading Volume</p>
+					</div>
+					<div class="stats2">
+						<p>2M+</p>
+						<p>Trading Volume</p>
+					</div>
+					<div class="stats3">
+						<p>2M+</p>
+						<p>Trading Volume</p>
+					</div>
+					<div class="stats4">
+						<p>2M+</p>
+						<p>Trading Volume</p>
+					</div>
+				</div>
+			</div>
+		</transition>
 	</header>
 </template>
 
@@ -85,78 +81,86 @@
 	} from "vue-router";
 	import gsap from "gsap";
 	import ScrollTrigger from "gsap/ScrollTrigger";
+	import TextPlugin from "gsap/TextPlugin";
+	gsap.registerPlugin(TextPlugin);
+
 	export default {
 		setup() {
-            // img animations
-            const beforeEnter = (el) => {
-                gsap.to(el, {
-                    
-                    x:'150%',
-                    opacity: 1,
-                });
-            };  
-            const enter = (el) => {
-                gsap.to(el, {
-                    opacity: 1,
-                    x:0,
-                    duration: 2
-                });
-            };
-            // header Animations
-            const headerBeforeEnter = (el) => {
-                gsap.to(el, {
-                    
-                    y:'-150%',
-                    opacity: 1,
-                });
-            };  
-            const headerEnter = (el) => {
-                gsap.to(el, {
-                    opacity: 1,
-                    y:0,
-                    duration: 1.75
-                });
-            };
-            const statsBeforeEnter = (el) => {
-                gsap.to(el, {
-                    
-                    
-                    opacity: 0,
-                });
-            };  
-            const statsEnter = (el) => {
-                gsap.to(el, {
-                    opacity: 1,
-                    duration: 3.75
-                });
-            };
+			// img animations
+			const beforeEnter = (el) => {
+				gsap.to(el, {
+					x: "150%",
+					opacity: 1,
+				});
+			};
+			const enter = (el) => {
+				gsap.to(el, {
+					opacity: 1,
+					x: 0,
+					duration: 2,
+				});
+			};
+			// header Animations
+			const headerBeforeEnter = (el) => {
+				gsap.to(el, {
+					y: "-150%",
+					opacity: 1,
+				});
+			};
+			const headerEnter = (el) => {
+				gsap.to(el, {
+					opacity: 1,
+					y: 0,
+					duration: 1.75,
+				});
+			};
+			const statsBeforeEnter = (el) => {
+				gsap.to(el, {
+					opacity: 0,
+				});
+			};
+			const statsEnter = (el) => {
+				gsap.to(el, {
+					opacity: 1,
+					duration: 3.75,
+				});
+			};
 
 			//  create variables for automated typing text
-			let text =
-				"All forms of digital arts live here. Create, trade, earn. DYOR";
+			let texts = [
+				"Find all forms of digital  here.",
+				"Create, Trade, Earn",
+				"DYOR",
+			];
+
 			let i = 0;
+
 			onMounted(() => {
 				// get element
-				const detailText =
-					document.getElementById("detailText");
-				// append character to element
-				const textInt = setInterval(() => {
-					detailText.innerHTML += text[i];
-					i++;
+				const masterTL = gsap.timeline({repeat:-1});
+				texts.forEach((text) => {
 
-					if (i === text.length) {
-						clearInterval(textInt);
-					}
-				}, 500);
+					let tl = gsap.timeline({
+						repeat: 1,
+						yoyo: true,
+					});
+					tl.to("#detailText", {
+						duration: 2,
+						text: text,
+					});
+					masterTL.add(tl);
+				});
 
 				// create element
 			});
 			return {
-                beforeEnter, enter,
-                headerBeforeEnter, headerEnter,
-                statsBeforeEnter, statsEnter,
-                
-            };
+				beforeEnter,
+				enter,
+				headerBeforeEnter,
+				headerEnter,
+				statsBeforeEnter,
+				statsEnter,
+			};
 		},
 	};
 </script>
@@ -205,12 +209,12 @@
 			flex-basis: 30%;
 			justify-content: space-around;
 			flex-direction: column;
-			#detailtext{
+			#detailtext {
 				color: $secondary-color;
 			}
 
 			& > p {
-				color: #f5f5f5;
+				color: $secondary-color;
 				// font-size: 7px;
 			}
 

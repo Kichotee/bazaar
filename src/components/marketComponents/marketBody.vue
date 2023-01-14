@@ -93,8 +93,7 @@ export default {
         const nftBeforeEnter = (el) => {
             gsap.to(
                 el,{
-                    opacity:0.75,
-                    y:'20%',
+                    opacity:0.5,
                     rotation:45,
 					transformOrigin:"left 50%"
                 }
@@ -107,14 +106,13 @@ export default {
                     scrollTrigger: {
                         trigger: el,
                         target:el,
-                        toggleActions: 'play complete reverse reset',
-                        // scrub: true,
+                        toggleActions: 'play restart none none',
+                        scrub: true,
                         
                         // end:`top 100px`
                         // markers:true
                     },
                     rotation:0,
-                    y: 0,
                     opacity: 1,
                     duration: 2.5,
                     delay: el.dataset.index*.6,
@@ -143,7 +141,7 @@ export default {
 
 #marketSection {
     padding: 0% 5% 0vh;
-    height: calc(30vh*12.8);
+    height: calc(30vh*13);
     min-height: 60vh;
     overflow-x: hidden;
     margin-top: 2.5%;
