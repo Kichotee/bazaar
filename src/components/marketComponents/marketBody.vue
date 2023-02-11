@@ -94,8 +94,7 @@ export default {
             gsap.to(
                 el,{
                     opacity:0.5,
-                    rotation:45,
-					transformOrigin:"left 50%"
+                   
                 }
             )
            
@@ -114,9 +113,7 @@ export default {
                     },
                     rotation:0,
                     opacity: 1,
-                    duration: 2.5,
-                    delay: el.dataset.index*.6,
-                    ease: 'bounce',
+                   
                 }
             )
 
